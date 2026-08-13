@@ -59,7 +59,7 @@
                     <div class="row align-items-center g-3">
                         <!-- Image Column -->
                         <div class="col-md-5">
-                            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop"
+                            <img src="./assets/img/kitchen-img.png"
                                 alt="Modular Kitchen" class="feature-img shadow-sm">
                         </div>
                         <!-- Content Column -->
@@ -186,34 +186,34 @@
                         <div class="row g-2">
                             <!-- Selected Active Item -->
                             <div class="col-6 mb-2">
-                                <div class="layout-option active">
+                                <button type="button" class="layout-option" data-layout="L-Shaped">
                                     <i class="fa-solid fa-square-person-confused fa-2x mb-1 text-muted"></i>
                                     <span>L-Shaped</span>
-                                </div>
+                                </button>
                             </div>
                             <div class="col-6 mb-2">
-                                <div class="layout-option">
+                                <button type="button" class="layout-option active" data-layout="U-Shaped">
                                     <i class="fa-solid fa-table-cells fa-2x mb-1 text-muted"></i>
                                     <span>U-Shaped</span>
-                                </div>
+                                </button>
                             </div>
                             <div class="col-4">
-                                <div class="layout-option">
+                                <button type="button" class="layout-option" data-layout="Straight">
                                     <i class="fa-solid fa-minus fa-2x mb-1 text-muted"></i>
                                     <span>Straight</span>
-                                </div>
+                                </button>
                             </div>
                             <div class="col-4">
-                                <div class="layout-option">
+                                <button type="button" class="layout-option" data-layout="Parallel">
                                     <i class="fa-solid fa-grip-lines fa-2x mb-1 text-muted"></i>
                                     <span>Parallel</span>
-                                </div>
+                                </button>
                             </div>
                             <div class="col-4">
-                                <div class="layout-option">
+                                <button type="button" class="layout-option" data-layout="Island">
                                     <i class="fa-solid fa-border-all fa-2x mb-1 text-muted"></i>
                                     <span>Island</span>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -228,15 +228,15 @@
                 <div class="col-lg">
                     <div class="estimator-card">
                         <div class="card-step-title">2. SELECT AREA (SQ.FT)</div>
-                        <a href="#" class="size-btn">50 – 75 sq.ft</a>
-                        <a href="#" class="size-btn active">75 – 100 sq.ft</a>
-                        <a href="#" class="size-btn">101 – 125 sq.ft</a>
-                        <a href="#" class="size-btn">126 – 150 sq.ft</a>
-                        <a href="#" class="size-btn">151 – 200 sq.ft</a>
-                        <a href="#"
+                        <p href="#" class="size-btn">50 – 75 sq.ft</p>
+                        <p href="#" class="size-btn active">75 – 100 sq.ft</p>
+                        <p href="#" class="size-btn">101 – 125 sq.ft</p>
+                        <p href="#" class="size-btn">126 – 150 sq.ft</p>
+                        <p  class="size-btn">151 – 200 sq.ft</p>
+                        <p 
                             class="size-btn text-muted fw-normal d-flex justify-content-center align-items-center gap-1">
                             Enter Custom Size <i class="fa-regular fa-pen-to-square"></i>
-                        </a>
+                        </p>
                     </div>
                 </div>
 
@@ -319,6 +319,119 @@
 
         </div>
     </section>
+
+    <script>
+        (function () {
+                        const priceMap = {
+                'Straight': {
+                    '50-75': '? 60,000 - ? 90,000',
+                    '75-100': '? 90,000 - ? 1,20,000',
+                    '101-125': '? 1,21,200 - ? 1,50,000',
+                    '126-150': '? 1,51,200 - ? 1,80,000',
+                    '151-200': '? 1,81,200 - ? 2,40,000'
+                },
+                'L-Shaped': {
+                    '50-75': '? 75,000 - ? 1,12,500',
+                    '75-100': '? 1,12,500 - ? 1,50,000',
+                    '101-125': '? 1,51,500 - ? 1,87,500',
+                    '126-150': '? 1,89,000 - ? 2,25,000',
+                    '151-200': '? 2,26,500 - ? 3,00,000'
+                },
+                'Parallel': {
+                    '50-75': '? 80,000 - ? 1,20,000',
+                    '75-100': '? 1,20,000 - ? 1,60,000',
+                    '101-125': '? 1,61,600 - ? 2,00,000',
+                    '126-150': '? 2,01,600 - ? 2,40,000',
+                    '151-200': '? 2,41,600 - ? 3,20,000'
+                },
+                'U-Shaped': {
+                    '50-75': '? 90,000 - ? 1,35,000',
+                    '75-100': '? 1,35,000 - ? 1,80,000',
+                    '101-125': '? 1,81,800 - ? 2,25,000',
+                    '126-150': '? 2,26,800 - ? 2,70,000',
+                    '151-200': '? 2,71,800 - ? 3,60,000'
+                },
+                'Island': {
+                    '50-75': '? 90,000 - ? 1,35,000',
+                    '75-100': '? 1,35,000 - ? 1,80,000',
+                    '101-125': '? 1,81,800 - ? 2,25,000',
+                    '126-150': '? 2,26,800 - ? 2,70,000',
+                    '151-200': '? 2,71,800 - ? 3,60,000'
+                }
+            };
+
+            const layoutTitleMap = {
+                'L-Shaped': 'L-Shaped Kitchen',
+                'U-Shaped': 'U-Shaped Kitchen',
+                'Straight': 'Straight Kitchen',
+                'Parallel': 'Parallel Kitchen',
+                'Island': 'Island Kitchen'
+            };
+
+            const layoutButtons = Array.from(document.querySelectorAll('.layout-option'));
+            const areaButtons = Array.from(document.querySelectorAll('.size-btn'));
+            const priceEl = document.querySelector('.price-value');
+            const layoutLabelEl = document.querySelector('.estimator-card h5.fw-bold');
+            const areaLabelEl = document.querySelector('.estimator-card .text-muted.small.mb-3');
+
+            function getLayoutName(button) {
+                return button?.querySelector('span')?.textContent?.trim() || '';
+            }
+
+            function getAreaKey(button) {
+                const text = button?.textContent?.replace(/\s+/g, ' ').trim() || '';
+                if (text.includes('50') && text.includes('75')) return '50-75';
+                if (text.includes('75') && text.includes('100')) return '75-100';
+                if (text.includes('101') && text.includes('125')) return '101-125';
+                if (text.includes('126') && text.includes('150')) return '126-150';
+                if (text.includes('151') && text.includes('200')) return '151-200';
+                return '126-150';
+            }
+
+            function setActive(buttons, activeButton) {
+                buttons.forEach((btn) => btn.classList.remove('active'));
+                activeButton.classList.add('active');
+            }
+
+            function updatePrice() {
+                const activeLayoutBtn = layoutButtons.find((btn) => btn.classList.contains('active')) || layoutButtons[1];
+                const activeAreaBtn = areaButtons.find((btn) => btn.classList.contains('active')) || areaButtons[3];
+                const layoutName = getLayoutName(activeLayoutBtn);
+                const areaKey = getAreaKey(activeAreaBtn);
+                const price = (priceMap[layoutName] && priceMap[layoutName][areaKey]) || '₹ 1,89,000 - ₹ 2,25,000';
+
+                if (layoutLabelEl) layoutLabelEl.textContent = layoutTitleMap[layoutName] || 'U-Shaped Kitchen';
+                if (areaLabelEl) areaLabelEl.textContent = `Area: ${activeAreaBtn.textContent.replace(/\s+/g, ' ').trim()}`;
+                if (priceEl) {
+                    priceEl.innerHTML = `${price} <i class="fa-regular fa-circle-question fs-6 text-muted" title="Estimated value"></i>`;
+                }
+            }
+
+            layoutButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    setActive(layoutButtons, button);
+                    updatePrice();
+                });
+            });
+
+            areaButtons.forEach((button) => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    if (button.textContent.includes('Enter Custom Size')) {
+                        return;
+                    }
+                    setActive(areaButtons, button);
+                    updatePrice();
+                });
+            });
+
+            const defaultLayout = layoutButtons.find((btn) => getLayoutName(btn) === 'U-Shaped');
+            const defaultArea = areaButtons.find((btn) => getAreaKey(btn) === '126-150');
+            if (defaultLayout) setActive(layoutButtons, defaultLayout);
+            if (defaultArea) setActive(areaButtons, defaultArea);
+            updatePrice();
+        })();
+    </script>
 
 
     <!-- Fourth Section (Happy Clients & Testimonials) -->
@@ -506,3 +619,6 @@
     </section>
 
     <?php include 'footer.php'; ?>
+
+
+

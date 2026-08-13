@@ -25,6 +25,37 @@
 
   }
 
+  /* Global responsive safety */
+  *,
+  *::before,
+  *::after {
+      box-sizing: border-box;
+  }
+
+  html,
+  body {
+      width: 100%;
+      overflow-x: hidden;
+  }
+
+  img,
+  svg,
+  video,
+  iframe {
+      max-width: 100%;
+      display: block;
+  }
+
+  img {
+      height: auto;
+  }
+
+  .container,
+  .container-fluid {
+      padding-left: clamp(16px, 3vw, 24px);
+      padding-right: clamp(16px, 3vw, 24px);
+  }
+
   /* Navbar Main Wrapper */
   .navbar-section {
       background-color: var(--nav-bg, rgba(255, 255, 255, 0.96));
@@ -144,7 +175,8 @@
   /* Offcanvas Side Slide Animation Styling */
   @media (max-width: 991.98px) {
       .navbar-section .offcanvas {
-          max-width: 280px;
+          width: min(100vw, 320px);
+          max-width: 320px;
       }
 
       .navbar-section .offcanvas-header {
@@ -180,6 +212,22 @@
           justify-content: center;
           margin-top: auto;
       }
+
+      .navbar-section .navbar-brand {
+          gap: 10px;
+      }
+
+      .navbar-section .logo-icon {
+          height: 40px;
+      }
+
+      .navbar-section .brand-title {
+          font-size: 1rem;
+      }
+
+      .navbar-section .brand-subtitle {
+          letter-spacing: 2.5px;
+      }
   }
 
 
@@ -192,7 +240,8 @@
       align-items: center;
       justify-content: center;
       background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-          url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+          url('../assets/img/kitchen1.png') center/cover no-repeat;
+          /* url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat; */
       color: #ffffff;
       text-align: center;
       padding: 60px 15px;
@@ -359,6 +408,11 @@
       .audio-control {
           right: 15px;
           bottom: 15px;
+      }
+
+      .index-first-section {
+          min-height: 90vh;
+          padding: 40px 15px 70px;
       }
   }
 
@@ -533,6 +587,72 @@
           padding-top: 40px;
           border-top: 1px solid #e0e0e0;
       }
+
+      .index-second-section .feature-img {
+          min-height: 280px;
+      }
+  }
+
+  @media (max-width: 767.98px) {
+      .index-second-section,
+      .index-third-section,
+      .index-fourth-section,
+      .index-fifth-section,
+      .about-second-section,
+      .about-third-section,
+      .about-fourth-section,
+      .about-sixth-section,
+      .contact-first-section,
+      .contact-second-section,
+      .get-quotation-section {
+          padding-top: 56px;
+          padding-bottom: 56px;
+      }
+
+      .index-second-section .section-title,
+      .index-third-section .section-title,
+      .index-fourth-section .section-title,
+      .about-second-section .section-title,
+      .contact-first-section .hero-title,
+      .contact-second-section .section-title,
+      .get-quotation-section .hero-title {
+          font-size: 1.55rem;
+      }
+
+      .index-third-section .wizard-steps {
+          flex-direction: column;
+          gap: 18px;
+      }
+
+      .index-third-section .wizard-steps::before {
+          display: none;
+      }
+
+      .index-third-section .step-item {
+          width: 100%;
+      }
+
+      .index-third-section .features-bar {
+          padding: 18px 16px;
+      }
+
+      .index-third-section .feature-box,
+      .contact-second-section .banner-content,
+      .index-fifth-section .cta-content-wrapper {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+      }
+
+      .index-fifth-section .btn-cta,
+      .contact-second-section .btn-book {
+          width: 100%;
+          justify-content: center;
+      }
+
+      .footer-section .col-border-right {
+          border-right: 0;
+      }
   }
 
   /* Main Third Section Wrapper */
@@ -633,6 +753,7 @@
 
   /* Step 1: Layout Selection Options */
   .index-third-section .layout-option {
+      width: 100%;
       border: 1px solid #e0e0e0;
       border-radius: 8px;
       padding: 12px 8px;
@@ -693,8 +814,8 @@
 
   /* Step 2: Size Selector Buttons */
   .index-third-section .size-btn {
-      display: block;
       width: 100%;
+      display: block;
       padding: 10px;
       margin-bottom: 10px;
       border: 1px solid #e0e0e0;
@@ -707,6 +828,8 @@
       cursor: pointer;
       transition: all 0.2s ease;
       text-decoration: none;
+      -webkit-appearance: none;
+      appearance: none;
   }
 
   .index-third-section .size-btn.active {
@@ -2644,6 +2767,10 @@
       .get-quotation-section .area-grid {
           grid-template-columns: repeat(2, 1fr);
       }
+
+      .get-quotation-section .price-amount {
+          font-size: 1.8rem;
+      }
   }
 
 
@@ -2946,6 +3073,10 @@
       .contact-first-section .exp-info-bar {
           padding: 20px;
       }
+
+      .contact-first-section .exp-img-box {
+          height: 210px;
+      }
   }
 
 
@@ -3113,6 +3244,23 @@
 
       .contact-second-section .btn-book {
           width: 100%;
+          justify-content: center;
+      }
+  }
+
+  @media (max-width: 575.98px) {
+      .index-first-section h1 {
+          font-size: 1.8rem;
+      }
+
+      .index-second-section .btn-brand,
+      .get-quotation-section .btn-submit-quote,
+      .contact-first-section .btn-send {
+          width: 100%;
+          justify-content: center;
+      }
+
+      .footer-section .social-links {
           justify-content: center;
       }
   }

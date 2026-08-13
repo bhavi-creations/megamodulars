@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centers of Excellence</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .section-wrapper {
+            position: relative;
+            padding: 50px 0;
+        }
+
+        /* Card styling based on original design */
+        .service-card {
+            background-color: #fff3eb;
+            /* Soft peach background */
+            border-radius: 12px;
+            padding: 24px 15px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            min-height: 110px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Icon styling with duo-tone primary color feel */
+        .service-card i {
+            font-size: 28px;
+            color: #00a896;
+            /* Medical teal accent color */
+            margin-bottom: 10px;
+        }
+
+        .service-card span {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333333;
+            line-height: 1.2;
+        }
+
+        /* Floating Center Badge on the Right */
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .floating-circle-badge {
+            width: 220px;
+            height: 220px;
+            background-color: #fff0e6;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            padding: 20px;
+        }
+
+        .floating-circle-badge i {
+            font-size: 30px;
+            color: #00a896;
+            margin-bottom: 8px;
+        }
+
+        .floating-circle-badge h5 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2b2b2b;
+            margin-bottom: 12px;
+        }
+
+        .know-more-btn {
+            background-color: #f26a36;
+            /* Accent orange button */
+            color: #ffffff;
+            border: none;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .know-more-btn:hover {
+            background-color: #d95523;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section-wrapper container-fluid px-lg-5">
+        <div class="row g-4 align-items-center">
+
+            <!-- Left Side: Dynamic Grid for Services -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>Neuro Surgery</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-code-fork"></i>
+                            <span>Neurology</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span>Cardiology</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-vial"></i>
+                            <span>Vascular Surgery</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-tooth"></i>
+                            <span>Dental Surgery</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-head-side-mask"></i>
+                            <span>Maxillo facial Surgery</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-bone"></i>
+                            <span>Orthopedics</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-baby"></i>
+                            <span>Pediatrics</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-person-pregnant"></i>
+                            <span>Gynecology</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-bed-pulse"></i>
+                            <span>Critical Care</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-truck-medical"></i>
+                            <span>Accidents & Trauma Care</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-x-ray"></i>
+                            <span>Radiology</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <span>General Medicine</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-person-walking"></i>
+                            <span>Physiotherapy</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-scalpel"></i>
+                            <span>General & Laproscopic Surgery</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>Neuro Psychiatric</span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="service-card">
+                            <i class="fa-solid fa-child-reaching"></i>
+                            <span>Neuro rehabilitation</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right Side: Floating "Centers of Excellence" Circle -->
+            <div class="col-lg-3 col-md-4 badge-container">
+                <div class="floating-circle-badge">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <h5>Centers of<br>Excellence</h5>
+                    <a href="#" class="know-more-btn">
+                        <i class="fa-regular fa-file-lines"></i> KNOW MORE
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>

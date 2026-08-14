@@ -177,6 +177,8 @@
       .navbar-section .offcanvas {
           width: min(100vw, 320px);
           max-width: 320px;
+          background-color: #ffffff;
+          z-index: 1055;
       }
 
       .navbar-section .offcanvas-header {
@@ -188,14 +190,28 @@
           padding: 25px 20px;
           display: flex;
           flex-direction: column;
+          background-color: #ffffff;
       }
 
       .navbar-section .navbar-nav {
           margin-bottom: 25px;
       }
 
+      .navbar-section .navbar-nav.mobile-nav {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+      }
+
       .navbar-section .nav-item {
           margin: 8px 0;
+          width: 100%;
+      }
+
+      .navbar-section .nav-link {
+          display: block;
+          width: 100%;
       }
 
       .navbar-section .nav-link.active::after {
@@ -1124,7 +1140,8 @@
   .index-fifth-section {
       position: relative;
       background: linear-gradient(rgba(20, 15, 10, 0.88), rgba(20, 15, 10, 0.88)),
-          url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+          url('../assets/img/Contact-bg.png') center/cover no-repeat;
+          /* url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat; */
       padding: 40px 0;
       color: #ffffff;
       font-family: system-ui, -apple-system, sans-serif;
@@ -2285,7 +2302,8 @@
   /* Bottom Dark Wood CTA Banner */
   .project-third-section .cta-banner {
       background: linear-gradient(rgba(30, 19, 12, 0.92), rgba(30, 19, 12, 0.92)),
-          url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop') center/cover;
+          url('../assets/img/kitchen2.png') center/cover;
+          /* url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop') center/cover; */
       border-radius: 12px;
       padding: 35px 40px;
       margin-top: 55px;
@@ -2366,7 +2384,7 @@
   /* Get Quotation Section Wrapper */
   .get-quotation-section {
       background-color: #e2d8cd;
-      padding-top: 60px;
+      /* padding-top: 60px; */
       padding-bottom: 60px;
       font-family: system-ui, -apple-system, sans-serif;
       color: var(--text-dark);
@@ -3201,7 +3219,8 @@
   /* Bottom Consultation Banner */
   .contact-second-section .consultation-banner {
       background: linear-gradient(rgba(18, 15, 12, 0.88), rgba(18, 15, 12, 0.88)),
-          url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+          url('../assets/img/kitchen1.png') center/cover no-repeat;
+          /* url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; */
       border-radius: 12px;
       padding: 30px 40px;
       margin-top: 40px;

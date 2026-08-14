@@ -1,4 +1,8 @@
-<?php include 'header.php'; ?>
+<?php
+$mailStatus = $_GET['mail'] ?? null;
+$mailMsg = $_GET['msg'] ?? '';
+include 'header.php';
+?>
 
 <!-- Get Quotation Section Wrapper -->
 <section class="get-quotation-section">
@@ -13,10 +17,7 @@
     </div>
 
     <div class="container">
-        <!-- Main Form Card -->
         <div class="quotation-card">
-
-            <!-- STEP 1: Kitchen Layout -->
             <div class="step-row">
                 <div class="step-number">1</div>
                 <div class="w-100">
@@ -54,7 +55,6 @@
 
             <hr class="my-4" style="border-color: var(--border-light);">
 
-            <!-- STEP 2: Select Area -->
             <div class="step-row">
                 <div class="step-number">2</div>
                 <div class="w-100">
@@ -92,7 +92,6 @@
 
             <hr class="my-4" style="border-color: var(--border-light);">
 
-            <!-- STEP 3: Choose Finish -->
             <div class="step-row">
                 <div class="step-number">3</div>
                 <div class="w-100">
@@ -130,12 +129,10 @@
 
             <hr class="my-4" style="border-color: var(--border-light);">
 
-            <!-- STEP 4: Summary & Price Section -->
             <div class="step-row">
                 <div class="step-number">4</div>
                 <div class="w-100">
                     <div class="row g-4">
-                        <!-- Left Summary -->
                         <div class="col-lg-7">
                             <div class="summary-card">
                                 <h6 class="step-heading mb-3">YOUR SELECTION SUMMARY</h6>
@@ -165,13 +162,12 @@
                             </div>
                         </div>
 
-                        <!-- Right Estimated Price Output -->
                         <div class="col-lg-5">
                             <div class="price-display-box">
                                 <span class="step-heading text-center mb-2">ESTIMATED PRICE</span>
                                 <div class="price-amount" id="finalPriceDisplay">₹ 2,45,000</div>
                                 <p class="price-label">( Estimated Price )<br>Inclusive of basic cabinets, shutters and fittings.</p>
-                                <button class="btn-get-this"><i class="fa-solid fa-calculator"></i> GET THIS QUOTATION</button>
+                                <button type="button" class="btn-get-this" id="scrollToForm"><i class="fa-solid fa-calculator"></i> GET THIS QUOTATION</button>
                             </div>
                         </div>
                     </div>
@@ -180,26 +176,29 @@
 
             <hr class="my-4" style="border-color: var(--border-light);">
 
-            <!-- STEP 5: Contact Details Form -->
             <div class="step-row">
                 <div class="step-number">5</div>
                 <div class="w-100">
                     <h6 class="step-heading">YOUR DETAILS</h6>
                     <p class="step-subtext">Please provide your details to receive the quotation</p>
 
-                    <form id="quoteForm">
+                    <form id="quoteForm" method="post" action="quotation-mail.php">
+                        <input type="hidden" name="layout" id="layoutInput" value="L-Shaped Kitchen">
+                        <input type="hidden" name="area" id="areaInput" value="76 - 100 sq.ft">
+                        <input type="hidden" name="finish" id="finishInput" value="Acrylic">
+                        <input type="hidden" name="estimated_price" id="priceInput" value="₹ 2,45,000">
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Full Name*" required>
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name*" required>
                             </div>
                             <div class="col-md-4">
-                                <input type="tel" class="form-control" placeholder="Mobile Number*" required>
+                                <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile Number*" required>
                             </div>
                             <div class="col-md-4">
-                                <input type="email" class="form-control" placeholder="Email Address">
+                                <input type="email" name="email_address" class="form-control" placeholder="Email Address">
                             </div>
                             <div class="col-md-4">
-                                <select class="form-select" required>
+                                <select name="city" class="form-select" required>
                                     <option value="" selected disabled>Select City*</option>
                                     <option value="Hyderabad">Hyderabad</option>
                                     <option value="Vijayawada">Vijayawada</option>
@@ -208,11 +207,11 @@
                                 </select>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" placeholder="Additional Message (Optional)">
+                                <input type="text" name="additional_message" class="form-control" placeholder="Additional Message (Optional)">
                             </div>
                             <div class="col-12 my-2">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="agreeCheck" checked>
+                                    <input class="form-check-input" type="checkbox" name="agree_updates" id="agreeCheck" checked>
                                     <label class="form-check-label text-muted" for="agreeCheck" style="font-size: 0.78rem;">
                                         I agree to receive updates & offers from Mega Modular Industries.
                                     </label>
@@ -226,12 +225,10 @@
                         </div>
                     </form>
 
-                    <!-- OR Divider -->
                     <div class="text-center my-3">
                         <span class="text-muted fw-bold" style="font-size: 0.75rem;">OR</span>
                     </div>
 
-                    <!-- WhatsApp Action Box -->
                     <div class="whatsapp-box">
                         <div class="d-flex align-items-center gap-3">
                             <i class="fa-brands fa-whatsapp text-success fs-3"></i>
@@ -245,67 +242,11 @@
 
                 </div>
             </div>
-
-            <!-- Bottom 4 Feature Bullet Badges -->
-            <div class="row g-3 mt-4 pt-4 border-top">
-                <div class="col-md-3 col-6">
-                    <div class="bottom-feature">
-                        <div class="bottom-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <div>
-                            <h6 class="fw-bold mb-1" style="font-size: 0.8rem;">Transparent Pricing</h6>
-                            <p class="text-muted mb-0" style="font-size: 0.72rem;">Clear and upfront estimated pricing for your convenience.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="bottom-feature">
-                        <div class="bottom-icon"><i class="fa-solid fa-sliders"></i></div>
-                        <div>
-                            <h6 class="fw-bold mb-1" style="font-size: 0.8rem;">Customized For You</h6>
-                            <p class="text-muted mb-0" style="font-size: 0.72rem;">Made as per your space, style and requirements.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="bottom-feature">
-                        <div class="bottom-icon"><i class="fa-solid fa-award"></i></div>
-                        <div>
-                            <h6 class="fw-bold mb-1" style="font-size: 0.8rem;">Premium Quality</h6>
-                            <p class="text-muted mb-0" style="font-size: 0.72rem;">High quality materials and durable hardware.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="bottom-feature">
-                        <div class="bottom-icon"><i class="fa-solid fa-headset"></i></div>
-                        <div>
-                            <h6 class="fw-bold mb-1" style="font-size: 0.8rem;">Expert Support</h6>
-                            <p class="text-muted mb-0" style="font-size: 0.72rem;">Our team is here to help you at every step.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Dark Expert Consultation Card -->
-            <div class="expert-banner d-flex flex-wrap align-items-center justify-content-between gap-3">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="bg-white rounded-circle p-2 text-dark fs-4">
-                        <i class="fa-regular fa-calendar-days text-brown"></i>
-                    </div>
-                    <div>
-                        <h6 class="fw-bold mb-1" style="font-size: 1rem;">Need Expert Help?</h6>
-                        <p class="text-white-50 mb-0" style="font-size: 0.8rem;">Book a free consultation with our design expert today.</p>
-                    </div>
-                </div>
-                <a href="contact.php" class="btn-consultation">CONSULTATION <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
         </div>
     </div>
 
 </section>
 
-<!-- Calculation & Interaction Script -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let currentBasePrice = 245000;
@@ -314,49 +255,97 @@
         const layoutCards = document.querySelectorAll('.get-quotation-section .option-card[data-layout]');
         const areaCards = document.querySelectorAll('.get-quotation-section .area-card');
         const finishCards = document.querySelectorAll('.get-quotation-section .finish-card');
-
         const summaryLayout = document.getElementById('summaryLayout');
         const summaryArea = document.getElementById('summaryArea');
         const summaryFinish = document.getElementById('summaryFinish');
         const finalPriceDisplay = document.getElementById('finalPriceDisplay');
+        const scrollToFormBtn = document.getElementById('scrollToForm');
 
         function updatePrice() {
             const total = Math.round(currentBasePrice * currentAreaMultiplier);
-            finalPriceDisplay.textContent = '₹ ' + total.toLocaleString('en-IN');
+            const formatted = '₹ ' + total.toLocaleString('en-IN');
+            finalPriceDisplay.textContent = formatted;
+            document.getElementById('priceInput').value = formatted;
         }
 
-        // Layout Selection
         layoutCards.forEach(card => {
             card.addEventListener('click', function() {
                 layoutCards.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
-                currentBasePrice = parseInt(this.getAttribute('data-baseprice'));
-                summaryLayout.textContent = this.getAttribute('data-layout');
+                const layoutValue = this.getAttribute('data-layout');
+                currentBasePrice = parseInt(this.getAttribute('data-baseprice'), 10);
+                summaryLayout.textContent = layoutValue;
+                document.getElementById('layoutInput').value = layoutValue;
                 updatePrice();
             });
         });
 
-        // Area Selection
         areaCards.forEach(card => {
             card.addEventListener('click', function() {
                 areaCards.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
+                const areaValue = this.getAttribute('data-area');
                 currentAreaMultiplier = parseFloat(this.getAttribute('data-multiplier'));
-                summaryArea.textContent = this.getAttribute('data-area');
+                summaryArea.textContent = areaValue;
+                document.getElementById('areaInput').value = areaValue;
                 updatePrice();
             });
         });
 
-        // Finish Selection
         finishCards.forEach(card => {
             card.addEventListener('click', function() {
                 finishCards.forEach(c => c.classList.remove('active'));
                 this.classList.add('active');
-                summaryFinish.textContent = this.getAttribute('data-finish');
+                const finishValue = this.getAttribute('data-finish');
+                summaryFinish.textContent = finishValue;
+                document.getElementById('finishInput').value = finishValue;
             });
         });
+
+        if (scrollToFormBtn) {
+            scrollToFormBtn.addEventListener('click', function() {
+                document.getElementById('quoteForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
+        updatePrice();
     });
 </script>
 
+<?php if ($mailStatus === 'success' || $mailStatus === 'error'): ?>
+<div class="modal fade" id="quoteStatusModal" tabindex="-1" aria-labelledby="quoteStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="quoteStatusModalLabel">Our expert will consult shortly</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-2">
+                    <?php if ($mailStatus === 'success'): ?>
+                        Your quotation request was sent successfully. We have received your selection details.
+                    <?php else: ?>
+                        Your request was received, but email delivery needs server mail setup.
+                    <?php endif; ?>
+                </p>
+                <?php if ($mailMsg !== ''): ?>
+                    <div class="alert alert-warning mb-0" role="alert"><?php echo htmlspecialchars($mailMsg, ENT_QUOTES, 'UTF-8'); ?></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modalEl = document.getElementById('quoteStatusModal');
+        if (!modalEl || typeof bootstrap === 'undefined') return;
+        var modal = new bootstrap.Modal(modalEl);
+        modal.show();
+        setTimeout(function() {
+            window.location.href = 'index.php';
+        }, 3500);
+    });
+</script>
+<?php endif; ?>
 
 <?php include 'footer.php'; ?>

@@ -54,7 +54,7 @@
                 <button class="filter-btn" data-filter="wardrobes">Wardrobes</button>
                 <button class="filter-btn" data-filter="tv-units">TV Units</button>
                 <button class="filter-btn" data-filter="storage">Storage Solutions</button>
-                <button class="filter-btn" data-filter="commercial">Commercial Interiors</button>
+                <!-- <button class="filter-btn" data-filter="commercial">Commercial Interiors</button> -->
             </div>
 
             <!-- Projects Grid -->
@@ -74,7 +74,7 @@
                                     <span><i class="fa-regular fa-square"></i> 120 sq.ft</span>
                                 </div>
                             </div>
-                            <a href="#" class="action-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                            <p class="action-btn"><i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                                     <span><i class="fa-regular fa-square"></i> 150 sq.ft</span>
                                 </div>
                             </div>
-                            <a href="#" class="action-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                           <p class="action-btn"><i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                                     <span><i class="fa-regular fa-square"></i> 100 sq.ft</span>
                                 </div>
                             </div>
-                            <a href="#" class="action-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                            <p class="action-btn"><i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                                     <span><i class="fa-solid fa-location-dot"></i> Manikonda, Hyderabad</span>
                                 </div>
                             </div>
-                            <a href="#" class="action-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                             <p class="action-btn"><i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                                     <span><i class="fa-solid fa-location-dot"></i> Kondapur, Hyderabad</span>
                                 </div>
                             </div>
-                            <a href="#" class="action-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                            <p class="action-btn"><i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                                     <span><i class="fa-solid fa-location-dot"></i> Nallagandla, Hyderabad</span>
                                 </div>
                             </div>
-                            <a href="#" class="action-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                             <p class="action-btn"><i class="fa-solid fa-arrow-right"></i></p>
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,8 @@
                 <div class="col-lg col-md-4 col-sm-6 col-divider">
                     <div class="feature-box">
                         <div class="feature-icon-wrapper">
-                            <i class="fa-solid fa-shield-check"></i>
+                            <!-- <i class="fa-solid fa-shield-check"></i> -->
+                             <i class="fa-solid fa-star"></i>
                         </div>
                         <div>
                             <h6 class="feature-title">Premium Materials</h6>
@@ -228,7 +229,8 @@
                 <div class="col-lg col-md-4 col-sm-6 col-divider">
                     <div class="feature-box">
                         <div class="feature-icon-wrapper">
-                            <i class="fa-solid fa-circle-check"></i>
+                            <!-- <i class="fa-solid fa-circle-check"></i> -->
+                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <div>
                             <h6 class="feature-title">Customized Designs</h6>
@@ -241,7 +243,8 @@
                 <div class="col-lg col-md-4 col-sm-6 col-divider">
                     <div class="feature-box">
                         <div class="feature-icon-wrapper">
-                            <i class="fa-solid fa-box-archive"></i>
+                            <!-- <i class="fa-solid fa-box-archive"></i> -->
+                                 <i class="fa-solid fa-truck-fast"></i>
                         </div>
                         <div>
                             <h6 class="feature-title">On-time Delivery</h6>

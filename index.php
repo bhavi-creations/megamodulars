@@ -55,7 +55,7 @@
         <div class="row align-items-center g-4">
 
             <!-- Left Block: About Us -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 order-1 order-lg-1">
                 <div class="row align-items-center g-3">
                     <!-- Image Column -->
                     <div class="col-md-5">
@@ -88,7 +88,7 @@
             </div>
 
             <!-- Middle Vertical Line Divider with Location Pin -->
-            <div class="col-lg-1 d-none d-lg-block text-center position-relative" style="min-height: 40px; ">
+            <div class="col-lg-1 order-2 order-lg-2 text-center position-relative divider-column" style="min-height: 40px; ">
                 <div class="vertical-divider">
                     <div class="divider-icon">
                         <i class="fa-solid fa-location-dot"></i>
@@ -97,7 +97,7 @@
             </div>
 
             <!-- Right Block: Directions -->
-            <div class="col-lg-5 right-column-wrapper">
+            <div class="col-lg-5 order-3 order-lg-3 right-column-wrapper">
                 <span class="section-subtitle">DIRECTIONS</span>
                 <h2 class="section-title">Visit Our Experience Center</h2>
                 <div class="heading-line"></div>
@@ -286,7 +286,7 @@
                 <div class="col-md-4">
                     <div class="feature-box">
                         <div class="feature-icon">
-                            <i class="fa-regular fa-calendar-check"></i>
+                            <i class="fa-solid fa-tags"></i>
                         </div>
                         <div>
                             <h6>Transparent Pricing</h6>
@@ -455,7 +455,8 @@
                 <div class="col-6 col-lg-3 stat-divider">
                     <div class="stat-item">
                         <div class="stat-icon">
-                            <i class="fa-regular fa-user"></i>
+                            <!-- <i class="fa-regular fa-user"></i> -->
+                            <i class="fa-solid fa-users"></i>
                         </div>
                         <div>
                             <div class="stat-number">250+</div>
@@ -468,7 +469,8 @@
                 <div class="col-6 col-lg-3 stat-divider">
                     <div class="stat-item">
                         <div class="stat-icon">
-                            <i class="fa-solid fa-clipboard-check"></i>
+                            <!-- <i class="fa-solid fa-clipboard-check"></i> -->
+                            <i class="fa-solid fa-list-check"></i>
                         </div>
                         <div>
                             <div class="stat-number">400+</div>
@@ -481,7 +483,8 @@
                 <div class="col-6 col-lg-3 stat-divider">
                     <div class="stat-item">
                         <div class="stat-icon">
-                            <i class="fa-solid fa-key"></i>
+                            <!-- <i class="fa-solid fa-key"></i> -->
+                            <i class="fa-solid fa-user-tie"></i>
                         </div>
                         <div>
                             <div class="stat-number">10+</div>
@@ -494,7 +497,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="stat-item">
                         <div class="stat-icon">
-                            <i class="fa-regular fa-circle-check"></i>
+                            <!-- <i class="fa-regular fa-circle-check"></i> -->
+                            <i class="fa-solid fa-face-smile"></i>
                         </div>
                         <div>
                             <div class="stat-number">98%</div>

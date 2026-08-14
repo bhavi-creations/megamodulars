@@ -91,7 +91,7 @@
                         © 2026 Mega Modular Industries. All Rights Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <!-- A venture of <strong class="text-white">Nayan Groups</strong> -->
+                        A venture of <strong class="text-white">Nayan Groups</strong>
                     </div>
                 </div>
             </div>

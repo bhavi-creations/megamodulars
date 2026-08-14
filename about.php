@@ -70,7 +70,8 @@
                 <div class="feature-list">
                     <div class="feature-item">
                         <div class="feature-icon">
-                            <i class="fa-solid fa-check"></i>
+                            <!-- <i class="fa-solid fa-check"></i> -->
+                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
                         <h6 class="feature-title">Customized Designs</h6>
                     </div>
@@ -84,7 +85,8 @@
 
                     <div class="feature-item">
                         <div class="feature-icon">
-                            <i class="fa-solid fa-box-archive"></i>
+                            <!-- <i class="fa-solid fa-box-archive"></i> -->
+                             <i class="fa-solid fa-truck-fast"></i>
                         </div>
                         <h6 class="feature-title">Timely Delivery</h6>
                     </div>
@@ -113,7 +115,10 @@
                         <!-- Stat 1 -->
                         <div class="col-6 col-md-3 stat-divider">
                             <div class="stat-item">
-                                <div class="stat-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                                <div class="stat-icon">
+                                    <!-- <i class="fa-solid fa-clipboard-check"></i> -->
+                                     <i class="fa-solid fa-list-check"></i>
+                            </div>
                                 <div class="text-start">
                                     <div class="stat-number">400+</div>
                                     <div class="stat-label">Projects Completed</div>
@@ -124,7 +129,12 @@
                         <!-- Stat 2 -->
                         <div class="col-6 col-md-3 stat-divider">
                             <div class="stat-item">
-                                <div class="stat-icon"><i class="fa-regular fa-user"></i></div>
+                                <div class="stat-icon">
+                                    
+                                <!-- <i class="fa-regular fa-user"></i> -->
+                                  <i class="fa-solid fa-users"></i>
+                            
+                            </div>
                                 <div class="text-start">
                                     <div class="stat-number">250+</div>
                                     <div class="stat-label">Happy Clients</div>
@@ -135,7 +145,10 @@
                         <!-- Stat 3 -->
                         <div class="col-6 col-md-3 stat-divider">
                             <div class="stat-item">
-                                <div class="stat-icon"><i class="fa-solid fa-key"></i></div>
+                                <div class="stat-icon">
+                                     <i class="fa-solid fa-user-tie"></i>
+                                <!-- <i class="fa-solid fa-key"></i> -->
+                            </div>
                                 <div class="text-start">
                                     <div class="stat-number">10+</div>
                                     <div class="stat-label">Years Experience</div>
@@ -146,7 +159,14 @@
                         <!-- Stat 4 -->
                         <div class="col-6 col-md-3">
                             <div class="stat-item">
-                                <div class="stat-icon"><i class="fa-regular fa-circle-check"></i></div>
+                                <div class="stat-icon">
+                                    
+                                <!-- <i class="fa-regular fa-circle-check"></i> -->
+                                  <i class="fa-solid fa-face-smile"></i>
+                            
+                            
+                            
+                            </div>
                                 <div class="text-start">
                                     <div class="stat-number">98%</div>
                                     <div class="stat-label">Client Satisfaction</div>
@@ -355,7 +375,8 @@
                 <div class="col-lg col-md-4 col-sm-6 col-divider">
                     <div class="value-item">
                         <div class="value-icon">
-                            <i class="fa-solid fa-shield-check"></i>
+                            <!-- <i class="fa-solid fa-shield-check"></i> -->
+                            <i class="fa-solid fa-handshake"></i>
                         </div>
                         <div>
                             <h6 class="value-title">Integrity</h6>

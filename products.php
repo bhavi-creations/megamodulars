@@ -34,12 +34,12 @@
         </div>
 
         <!-- Slider Navigation Dots (Matching Image Bottom Indicators) -->
-        <div class="slider-dots">
+        <!-- <div class="slider-dots">
             <span class="dot active"></span>
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
-        </div>
+        </div> -->
     </section> 
 
 
@@ -64,7 +64,7 @@
                 <div class="col-lg-4 col-md-6 project-col" data-category="kitchens">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop" alt="Modern L-Shaped Kitchen" class="project-img">
+                            <img src="./assets/img/lshape.png" alt="Modern L-Shaped Kitchen" class="project-img">
                         </div>
                         <div class="project-content">
                             <div>
@@ -83,7 +83,7 @@
                 <div class="col-lg-4 col-md-6 project-col" data-category="kitchens">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop" alt="Premium U-Shaped Kitchen" class="project-img">
+                            <img src="./assets/img/Premium U-Shaped Kitchen.png" alt="Premium U-Shaped Kitchen" class="project-img">
                         </div>
                         <div class="project-content">
                             <div>
@@ -102,7 +102,7 @@
                 <div class="col-lg-4 col-md-6 project-col" data-category="kitchens">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=600&auto=format&fit=crop" alt="Elegant Straight Kitchen" class="project-img">
+                            <img src="./assets/img/Elegant Straight Kitchen.png" alt="Elegant Straight Kitchen" class="project-img">
                         </div>
                         <div class="project-content">
                             <div>
@@ -121,7 +121,7 @@
                 <div class="col-lg-4 col-md-6 project-col" data-category="wardrobes">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600&auto=format&fit=crop" alt="Sliding Door Wardrobe" class="project-img">
+                            <img src="./assets/img/Sliding Door Wardrobe.png" alt="Sliding Door Wardrobe" class="project-img">
                         </div>
                         <div class="project-content">
                             <div>
@@ -139,7 +139,7 @@
                 <div class="col-lg-4 col-md-6 project-col" data-category="tv-units">
                     <div class="project-card">
                         <div class="project-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop" alt="Contemporary TV Unit" class="project-img">
+                            <img src="./assets/img/Contemporary TV Unit.png" alt="Contemporary TV Unit" class="project-img">
                         </div>
                         <div class="project-content">
                             <div>

@@ -88,7 +88,7 @@
                 </div>
 
                 <!-- Middle Vertical Line Divider with Location Pin -->
-                <div class="col-lg-1 d-none d-lg-block text-center position-relative" style="min-height: 380px;">
+                <div class="col-lg-1 d-none d-lg-block text-center position-relative" style="min-height: 40px; ">
                     <div class="vertical-divider">
                         <div class="divider-icon">
                             <i class="fa-solid fa-location-dot"></i>
@@ -137,7 +137,7 @@
                         <div class="col-sm-5">
                             <div class="map-preview-card">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.2533810148813!2d78.4062!3d17.4832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91f3f0000001%3A0x1!2sKukatpally%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1700000000000"
+                                    src="https://www.google.com/maps/embedpb=!1m18!1m12!1m3!1d3805.2533810148813!2d78.4062!3d17.4832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91f3f0000001%3A0x1!2sKukatpally%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1700000000000"
                                     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
@@ -188,30 +188,35 @@
                             <div class="col-6 mb-2">
                                 <button type="button" class="layout-option" data-layout="L-Shaped">
                                     <i class="fa-solid fa-square-person-confused fa-2x mb-1 text-muted"></i>
+                                     <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
                                     <span>L-Shaped</span>
                                 </button>
                             </div>
                             <div class="col-6 mb-2">
                                 <button type="button" class="layout-option active" data-layout="U-Shaped">
                                     <i class="fa-solid fa-table-cells fa-2x mb-1 text-muted"></i>
+                                       <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;">/ -->
                                     <span>U-Shaped</span>
                                 </button>
                             </div>
                             <div class="col-4">
                                 <button type="button" class="layout-option" data-layout="Straight">
                                     <i class="fa-solid fa-minus fa-2x mb-1 text-muted"></i>
+                                       <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
                                     <span>Straight</span>
                                 </button>
                             </div>
                             <div class="col-4">
                                 <button type="button" class="layout-option" data-layout="Parallel">
                                     <i class="fa-solid fa-grip-lines fa-2x mb-1 text-muted"></i>
+                                       <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
                                     <span>Parallel</span>
                                 </button>
                             </div>
                             <div class="col-4">
                                 <button type="button" class="layout-option" data-layout="Island">
                                     <i class="fa-solid fa-border-all fa-2x mb-1 text-muted"></i>
+                                       <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
                                     <span>Island</span>
                                 </button>
                             </div>
@@ -324,39 +329,39 @@
         (function () {
                         const priceMap = {
                 'Straight': {
-                    '50-75': '? 60,000 - ? 90,000',
-                    '75-100': '? 90,000 - ? 1,20,000',
-                    '101-125': '? 1,21,200 - ? 1,50,000',
-                    '126-150': '? 1,51,200 - ? 1,80,000',
-                    '151-200': '? 1,81,200 - ? 2,40,000'
+                    '50-75': ' 60,000 -  90,000',
+                    '75-100': ' 90,000 -  1,20,000',
+                    '101-125': ' 1,21,200 -  1,50,000',
+                    '126-150': ' 1,51,200 -  1,80,000',
+                    '151-200': ' 1,81,200 -  2,40,000'
                 },
                 'L-Shaped': {
-                    '50-75': '? 75,000 - ? 1,12,500',
-                    '75-100': '? 1,12,500 - ? 1,50,000',
-                    '101-125': '? 1,51,500 - ? 1,87,500',
-                    '126-150': '? 1,89,000 - ? 2,25,000',
-                    '151-200': '? 2,26,500 - ? 3,00,000'
+                    '50-75': ' 75,000 -  1,12,500',
+                    '75-100': ' 1,12,500 -  1,50,000',
+                    '101-125': ' 1,51,500 -  1,87,500',
+                    '126-150': ' 1,89,000 -  2,25,000',
+                    '151-200': ' 2,26,500 -  3,00,000'
                 },
                 'Parallel': {
-                    '50-75': '? 80,000 - ? 1,20,000',
-                    '75-100': '? 1,20,000 - ? 1,60,000',
-                    '101-125': '? 1,61,600 - ? 2,00,000',
-                    '126-150': '? 2,01,600 - ? 2,40,000',
-                    '151-200': '? 2,41,600 - ? 3,20,000'
+                    '50-75': ' 80,000 -  1,20,000',
+                    '75-100': ' 1,20,000 -  1,60,000',
+                    '101-125': ' 1,61,600 -  2,00,000',
+                    '126-150': ' 2,01,600 -  2,40,000',
+                    '151-200': ' 2,41,600 -  3,20,000'
                 },
                 'U-Shaped': {
-                    '50-75': '? 90,000 - ? 1,35,000',
-                    '75-100': '? 1,35,000 - ? 1,80,000',
-                    '101-125': '? 1,81,800 - ? 2,25,000',
-                    '126-150': '? 2,26,800 - ? 2,70,000',
-                    '151-200': '? 2,71,800 - ? 3,60,000'
+                    '50-75': ' 90,000 -  1,35,000',
+                    '75-100': ' 1,35,000 -  1,80,000',
+                    '101-125': ' 1,81,800 -  2,25,000',
+                    '126-150': ' 2,26,800 -  2,70,000',
+                    '151-200': ' 2,71,800 -  3,60,000'
                 },
                 'Island': {
-                    '50-75': '? 90,000 - ? 1,35,000',
-                    '75-100': '? 1,35,000 - ? 1,80,000',
-                    '101-125': '? 1,81,800 - ? 2,25,000',
-                    '126-150': '? 2,26,800 - ? 2,70,000',
-                    '151-200': '? 2,71,800 - ? 3,60,000'
+                    '50-75': ' 90,000 -  1,35,000',
+                    '75-100': ' 1,35,000 -  1,80,000',
+                    '101-125': ' 1,81,800 -  2,25,000',
+                    '126-150': ' 2,26,800 -  2,70,000',
+                    '151-200': ' 2,71,800 -  3,60,000'
                 }
             };
 
@@ -375,11 +380,11 @@
             const areaLabelEl = document.querySelector('.estimator-card .text-muted.small.mb-3');
 
             function getLayoutName(button) {
-                return button?.querySelector('span')?.textContent?.trim() || '';
+                return button.querySelector('span').textContent.trim() || '';
             }
 
             function getAreaKey(button) {
-                const text = button?.textContent?.replace(/\s+/g, ' ').trim() || '';
+                const text = button.textContent.replace(/\s+/g, ' ').trim() || '';
                 if (text.includes('50') && text.includes('75')) return '50-75';
                 if (text.includes('75') && text.includes('100')) return '75-100';
                 if (text.includes('101') && text.includes('125')) return '101-125';
@@ -512,7 +517,7 @@
                     <div class="testimonial-card">
                         <div class="row g-0 align-items-center h-100">
                             <div class="col-5">
-                                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=400&auto=format&fit=crop" alt="Kitchen Project" class="client-img">
+                                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8fq=80&w=400&auto=format&fit=crop" alt="Kitchen Project" class="client-img">
                             </div>
                             <div class="col-7">
                                 <div class="testimonial-body">
@@ -533,7 +538,7 @@
                     <div class="testimonial-card">
                         <div class="row g-0 align-items-center h-100">
                             <div class="col-5">
-                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop" alt="Kitchen Project" class="client-img">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0cq=80&w=400&auto=format&fit=crop" alt="Kitchen Project" class="client-img">
                             </div>
                             <div class="col-7">
                                 <div class="testimonial-body">
@@ -554,7 +559,7 @@
                     <div class="testimonial-card">
                         <div class="row g-0 align-items-center h-100">
                             <div class="col-5">
-                                <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=400&auto=format&fit=crop" alt="Kitchen Project" class="client-img">
+                                <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775aeq=80&w=400&auto=format&fit=crop" alt="Kitchen Project" class="client-img">
                             </div>
                             <div class="col-7">
                                 <div class="testimonial-body">
@@ -601,7 +606,7 @@
                         
                         <!-- Headline & Subtitle -->
                         <div>
-                            <h3>Ready to Build Your Dream Kitchen?</h3>
+                            <h3>Ready to Build Your Dream Kitchen</h3>
                             <p>Get your personalized quotation today.</p>
                         </div>
                     </div>
@@ -618,7 +623,7 @@
         </div>
     </section>
 
-    <?php include 'footer.php'; ?>
+    <? php include 'footer.php'; ?>
 
 
 

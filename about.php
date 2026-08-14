@@ -96,13 +96,13 @@
                 <div class="row g-3">
                     <!-- Main Large Kitchen Image -->
                     <div class="col-md-7">
-                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop" alt="Kitchen Interior" class="grid-img main-img">
+                        <img src="./assets/img/about-sqaure1.png" alt="Kitchen Interior" class="grid-img main-img">
                     </div>
 
                     <!-- Right Side 2 Stacked Images -->
                     <div class="col-md-5 d-flex flex-column gap-3">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop" alt="TV Unit" class="grid-img sub-img">
-                        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=600&auto=format&fit=crop" alt="Wardrobe Glass Unit" class="grid-img sub-img">
+                        <img src="./assets/img/about-side-1.png" alt="TV Unit" class="grid-img sub-img">
+                        <img src="./assets/img/about-side-2.png" alt="Wardrobe Glass Unit" class="grid-img sub-img">
                     </div>
                 </div>
 
@@ -256,7 +256,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 position-relative">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=400&auto=format&fit=crop" alt="Design & Planning" class="process-img">
+                            <img src="./assets/img/index-hospital-1.png" alt="Design & Planning" class="process-img">
                             <span class="step-number">1</span>
                         </div>
                         <h6 class="step-title">Design & Planning</h6>

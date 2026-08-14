@@ -3158,6 +3158,10 @@
       background-color: #ffffff;
       padding: 16px 20px;
       box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
   }
 
   .contact-second-section .custom-accordion .accordion-button:not(.collapsed) {
@@ -3167,21 +3171,24 @@
 
   /* Replacing Default Arrow with Plus/Minus Icon */
   .contact-second-section .custom-accordion .accordion-button::after {
-      content: "\f055";
-      /* FontAwesome circle-plus icon */
-      font-family: "Font Awesome 6 Free";
-      font-weight: 400;
+      content: "";
       background-image: none;
-      font-size: 1.25rem;
-      color: var(--brand-brown);
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border: 2px solid var(--brand-brown);
+      border-radius: 50%;
+      position: relative;
       transform: none;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      background:
+          linear-gradient(var(--brand-brown), var(--brand-brown)) center / 10px 2px no-repeat,
+          linear-gradient(var(--brand-brown), var(--brand-brown)) center / 2px 10px no-repeat;
   }
 
   .contact-second-section .custom-accordion .accordion-button:not(.collapsed)::after {
-      content: "\f056";
-      /* FontAwesome circle-minus icon */
-      color: var(--brand-brown);
+      background:
+          linear-gradient(var(--brand-brown), var(--brand-brown)) center / 10px 2px no-repeat;
   }
 
   .contact-second-section .custom-accordion .accordion-body {

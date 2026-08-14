@@ -158,7 +158,7 @@
         </div>
 
         <!-- Top Step Wizard Header -->
-        <div class="wizard-steps">
+        <!-- <div class="wizard-steps">
             <div class="step-item">
                 <div class="step-number">1</div>
                 <div class="step-label">Choose Layout</div>
@@ -171,7 +171,7 @@
                 <div class="step-number">3</div>
                 <div class="step-label">Get Estimated Price</div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Interactive Estimator Cards Row -->
         <div class="row g-3 align-items-center">
@@ -253,10 +253,10 @@
                     <div class="card-step-title">3. YOUR ESTIMATED PRICE</div>
 
                     <!-- Layout Preview Thumbnail -->
-                    <div class="my-3 py-2">
+                    <!-- <div class="my-3 py-2">
                         <i class="fa-solid fa-kitchen-set fa-4x"
                             style="color: var(--brand-brown); opacity: 0.8;"></i>
-                    </div>
+                    </div> -->
 
                     <h5 class="fw-bold text-dark mb-1">L-Shaped Kitchen</h5>
                     <div class="text-muted small mb-3">Area: 75 – 100 sq.ft</div>
@@ -268,7 +268,7 @@
                             title="Estimated value"></i>
                     </div>
 
-                    <a href="#" class="btn-get-quote">
+                    <a href="get-quotation.php" class="btn-get-quote">
                         GET THIS QUOTATION <i class="fa-solid fa-arrow-right"></i>
                     </a>
 

@@ -21,7 +21,7 @@ include 'header.php';
             <div class="step-row">
                 <div class="step-number">1</div>
                 <div class="w-100">
-                    <h6 class="step-heading">CHOOSE KITCHEN LAYOUT</h6>
+                    <h6 class="step-heading">Choose Layout</h6>
                     <p class="step-subtext">Select the layout that fits your space</p>
 
                     <div class="option-grid">
@@ -58,7 +58,7 @@ include 'header.php';
             <div class="step-row">
                 <div class="step-number">2</div>
                 <div class="w-100">
-                    <h6 class="step-heading">SELECT AREA (SQ.FT)</h6>
+                    <h6 class="step-heading">Select Area</h6>
                     <p class="step-subtext">Choose your kitchen area or enter custom size</p>
 
                     <div class="area-grid">
@@ -164,7 +164,7 @@ include 'header.php';
 
                         <div class="col-lg-5">
                             <div class="price-display-box">
-                                <span class="step-heading text-center mb-2">ESTIMATED PRICE</span>
+                                <span class="step-heading text-center mb-2">Get Estimated Price</span>
                                 <div class="price-amount" id="finalPriceDisplay">₹ 2,45,000</div>
                                 <p class="price-label">( Estimated Price )<br>Inclusive of basic cabinets, shutters and fittings.</p>
                                 <button type="button" class="btn-get-this" id="scrollToForm"><i class="fa-solid fa-calculator"></i> GET THIS QUOTATION</button>

@@ -2483,7 +2483,7 @@
       font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.5px;
-      text-transform: uppercase;
+      text-transform: none;
       color: var(--brand-brown);
       margin-bottom: 2px;
   }
@@ -2822,6 +2822,21 @@
 
       .get-quotation-section .hero-title {
           font-size: 1.7rem;
+      }
+
+      .get-quotation-section .step-heading {
+          font-size: 0.84rem;
+          letter-spacing: 0.3px;
+      }
+
+      .get-quotation-section .step-row {
+          gap: 12px;
+      }
+
+      .get-quotation-section .step-number {
+          width: 26px;
+          height: 26px;
+          font-size: 0.8rem;
       }
 
       .get-quotation-section .option-grid {

@@ -297,7 +297,7 @@
                         <p class="text-white-50 mb-0" style="font-size: 0.8rem;">Book a free consultation with our design expert today.</p>
                     </div>
                 </div>
-                <a href="#" class="btn-consultation">BOOK FREE CONSULTATION <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="contact.php" class="btn-consultation">CONSULTATION <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
         </div>

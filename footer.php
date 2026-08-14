@@ -26,11 +26,11 @@
                 <div class="col-lg-2 col-md-6 col-6 col-border-right ps-lg-4">
                     <h6 class="widget-title">QUICK LINKS</h6>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Directions</a></li>
-                        <li><a href="#">Get Quotation</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="products.php">Products</a></li>
+                        <li><a href="get-quotation.php">Get Quotation</a></li>
+                        <li><a href="contact.php">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -38,11 +38,11 @@
                 <div class="col-lg-2 col-md-6 col-6 col-border-right ps-lg-4">
                     <h6 class="widget-title">OUR PRODUCTS</h6>
                     <ul class="footer-links">
-                        <li><a href="#">Modular Kitchens</a></li>
-                        <li><a href="#">Wardrobes</a></li>
-                        <li><a href="#">TV Units</a></li>
-                        <li><a href="#">Storage Solutions</a></li>
-                        <li><a href="#">Custom Furniture</a></li>
+                        <li><a href="products.php">Modular Kitchens</a></li>
+                        <li><a href="products.php">Wardrobes</a></li>
+                        <li><a href="products.php">TV Units</a></li>
+                        <li><a href="products.php">Storage Solutions</a></li>
+                        <li><a href="products.php">Custom Furniture</a></li>
                     </ul>
                 </div>
 
@@ -91,7 +91,7 @@
                         © 2026 Mega Modular Industries. All Rights Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        A venture of <strong class="text-white">Nayan Groups</strong>
+                        <!-- A venture of <strong class="text-white">Nayan Groups</strong> -->
                     </div>
                 </div>
             </div>

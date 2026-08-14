@@ -174,11 +174,11 @@
             </div>
 
             <!-- View All Projects Button -->
-            <div class="text-center margin-top-btn mt-5">
+            <!-- <div class="text-center margin-top-btn mt-5">
                 <a href="#" class="view-all-btn">
                     VIEW ALL PROJECTS <i class="fa-solid fa-arrow-right"></i>
                 </a>
-            </div>
+            </div> -->
 
         </div>
     </section>
@@ -276,10 +276,10 @@
 
                     <div class="col-lg-5 text-center text-lg-end">
                         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end gap-3">
-                            <a href="#" class="btn-get-quote">
+                            <a href="get-quotation.php" class="btn-get-quote">
                                 GET QUOTATION <i class="fa-solid fa-arrow-right"></i>
                             </a>
-                            <a href="#" class="btn-talk-expert">
+                            <a href="contact.php" class="btn-talk-expert">
                                 <i class="fa-solid fa-phone"></i> TALK TO EXPERT
                             </a>
                         </div>

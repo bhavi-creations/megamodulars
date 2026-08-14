@@ -104,7 +104,7 @@
 
                             <!-- Panel Image -->
                             <div class="exp-img-box">
-                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Mega Modular Storefront" class="exp-img">
+                                <img src="./assets/img/contact.png" alt="Mega Modular Storefront" class="exp-img">
                             </div>
 
                             <!-- Panel Bottom Contact Grid -->
@@ -199,6 +199,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
                                     What areas do you serve?
                                 </button>
+                                
                             </h2>
                             <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#contactFaqAccordion">
                                 <div class="accordion-body">

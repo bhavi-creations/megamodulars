@@ -101,7 +101,7 @@
 
                     <!-- Right Side 2 Stacked Images -->
                     <div class="col-md-5 d-flex flex-column gap-3">
-                        <img src="./assets/img/about-side-1.png" alt="TV Unit" class="grid-img sub-img">
+                        <img src="./assets/img/premium-furnitor.png" alt="TV Unit" class="grid-img sub-img">
                         <img src="./assets/img/about-side-2.png" alt="Wardrobe Glass Unit" class="grid-img sub-img">
                     </div>
                 </div>
@@ -256,7 +256,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 position-relative">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="./assets/img/index-hospital-1.png" alt="Design & Planning" class="process-img">
+                            <img src="./assets/img/aboyt-squre-1.png" alt="Design & Planning" class="process-img">
                             <span class="step-number">1</span>
                         </div>
                         <h6 class="step-title">Design & Planning</h6>
@@ -270,7 +270,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 position-relative">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=400&auto=format&fit=crop" alt="Material Selection" class="process-img">
+                            <img src="./assets/img/aboyt-squre-2.png" alt="Material Selection" class="process-img">
                             <span class="step-number">2</span>
                         </div>
                         <h6 class="step-title">Material Selection</h6>
@@ -284,7 +284,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 position-relative">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=400&auto=format&fit=crop" alt="Precision Manufacturing" class="process-img">
+                            <img src="./assets/img/aboyt-squre-3.png" alt="Precision Manufacturing" class="process-img">
                             <span class="step-number">3</span>
                         </div>
                         <h6 class="step-title">Precision Manufacturing</h6>
@@ -298,7 +298,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 position-relative">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400&auto=format&fit=crop" alt="Quality Check" class="process-img">
+                            <img src="./assets/img/aboyt-squre-4.png" alt="Quality Check" class="process-img">
                             <span class="step-number">4</span>
                         </div>
                         <h6 class="step-title">Quality Check</h6>
@@ -312,7 +312,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 position-relative">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400&auto=format&fit=crop" alt="Installation" class="process-img">
+                            <img src="./assets/img/aboyt-squre-5.png" alt="Installation" class="process-img">
                             <span class="step-number">5</span>
                         </div>
                         <h6 class="step-title">Installation</h6>
@@ -326,7 +326,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="process-item">
                         <div class="process-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=400&auto=format&fit=crop" alt="Handover" class="process-img">
+                            <img src="./assets/img/aboyt-squre-7.png" alt="Handover" class="process-img">
                             <span class="step-number">6</span>
                         </div>
                         <h6 class="step-title">Handover</h6>
@@ -469,7 +469,7 @@
 
                 <!-- Right Block: Action Button -->
                 <div class="col-md-4 col-lg-3 text-md-end">
-                    <a href="#" class="btn-cta">
+                    <a href="get-quotation.php" class="btn-cta">
                         GET QUOTATION NOW <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>

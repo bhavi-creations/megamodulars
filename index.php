@@ -50,19 +50,19 @@
 </section>
 
 <!-- Second Section (About & Directions) -->
-<section class="index-second-section">
+<!-- <section class="index-second-section">
     <div class="container">
         <div class="row align-items-center g-4">
 
-            <!-- Left Block: About Us -->
+        
             <div class="col-lg-6 order-1 order-lg-1">
                 <div class="row align-items-center g-3">
-                    <!-- Image Column -->
+                 
                     <div class="col-md-5">
                         <img src="./assets/img/kitchen-img.png"
                             alt="Modular Kitchen" class="feature-img shadow-sm">
                     </div>
-                    <!-- Content Column -->
+                
                     <div class="col-md-7 ps-md-3">
                         <span class="section-subtitle">ABOUT US</span>
                         <h2 class="section-title">Crafted with Precision.<br>Built for a Lifetime.</h2>
@@ -87,23 +87,24 @@
                 </div>
             </div>
 
-            <!-- Middle Vertical Line Divider with Location Pin -->
+         
             <div class="col-lg-1 order-2 order-lg-2 text-center position-relative divider-column" style="min-height: 40px; ">
                 <div class="vertical-divider">
+                    <div class="map-locaions"></div>
                     <div class="divider-icon">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Block: Directions -->
+           
             <div class="col-lg-5 order-3 order-lg-3 right-column-wrapper">
                 <span class="section-subtitle">DIRECTIONS</span>
                 <h2 class="section-title">Visit Our Experience Center</h2>
                 <div class="heading-line"></div>
 
                 <div class="row g-3 align-items-center">
-                    <!-- Address Details Column -->
+                  
                     <div class="col-sm-7">
                         <ul class="info-list">
                             <li>
@@ -133,7 +134,6 @@
                         </a>
                     </div>
 
-                    <!-- Map Preview Thumbnail -->
                     <div class="col-sm-5">
                         <div class="map-preview-card">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3815.820023428833!2d82.2506152!3d16.983400900000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3829915d3063a9%3A0x357d06d49d4e389a!2sBhavi%20Creations%20Pvt%20Ltd%20-%20Digital%20Marketing%20company%20in%20kakinada!5e0!3m2!1sen!2sin!4v1786688860508!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -145,7 +145,13 @@
 
         </div>
     </div>
-</section>
+</section> -->
+
+<?php include './index-second-section.php' ; ?>
+
+
+
+
 
 <!-- Third Section (Get Quotation Interactive Estimator) -->
 <section class="index-third-section">
@@ -182,38 +188,42 @@
                     <div class="card-step-title">1. CHOOSE KITCHEN LAYOUT</div>
                     <div class="row g-2">
                         <!-- Selected Active Item -->
-                        <div class="col-6 mb-2">
+                        <div class="col-4 mb-2">
                             <button type="button" class="layout-option" data-layout="L-Shaped">
-                                <i class="fa-solid fa-square-person-confused fa-2x mb-1 text-muted"></i>
-                                <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
+                                <!-- <i class="fa-solid fa-square-person-confused fa-2x mb-1 text-muted"></i> -->
+                                <img src="./assets/img/lshape.png" alt=" l-shape" style="width: 90px ; " >
                                 <span>L-Shaped</span>
                             </button>
                         </div>
-                        <div class="col-6 mb-2">
+                        <div class="col-4 mb-2">
                             <button type="button" class="layout-option active" data-layout="U-Shaped">
-                                <i class="fa-solid fa-table-cells fa-2x mb-1 text-muted"></i>
-                                <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;">/ -->
+                                <!-- <i class="fa-solid fa-table-cells fa-2x mb-1 text-muted"></i> -->
+                                <img src="./assets/img/ushaped.png" alt=" l-shape" style="width: 90px ;">
                                 <span>U-Shaped</span>
                             </button>
                         </div>
                         <div class="col-4">
                             <button type="button" class="layout-option" data-layout="Straight">
-                                <i class="fa-solid fa-minus fa-2x mb-1 text-muted"></i>
-                                <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
+                                <!-- <i class="fa-solid fa-minus fa-2x mb-1 text-muted"></i> -->
+                                <img src="./assets/img/straight.png" alt=" l-shape" style="width: 90px ;">
                                 <span>Straight</span>
                             </button>
                         </div>
                         <div class="col-4">
                             <button type="button" class="layout-option" data-layout="Parallel">
-                                <i class="fa-solid fa-grip-lines fa-2x mb-1 text-muted"></i>
-                                <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
+                                <!-- <i class="fa-solid fa-grip-lines fa-2x mb-1 text-muted"></i> -->
+                                <img src="./assets/img/parallel.png" alt=" l-shape" style="width: 90px ;">
                                 <span>Parallel</span>
                             </button>
                         </div>
+
+                         <div class="col-4">
+                           
+                        </div>
                         <div class="col-4">
                             <button type="button" class="layout-option" data-layout="Island">
-                                <i class="fa-solid fa-border-all fa-2x mb-1 text-muted"></i>
-                                <!-- <img src="./assets/img/1.png" alt=" l-shape" style="width: 90px ;"> -->
+                                <!-- <i class="fa-solid fa-border-all fa-2x mb-1 text-muted"></i> -->
+                                <img src="./assets/img/island.png" alt=" l-shape" style="width: 90px ;">
                                 <span>Island</span>
                             </button>
                         </div>
@@ -518,7 +528,7 @@
                 <div class="testimonial-card">
                     <div class="row g-0 align-items-center h-100">
                         <div class="col-5">
-                            <img src="./assets/img/kitchen-img.png" alt="Kitchen Project" class="client-img">
+                            <img src="./assets/img/f1.png" alt="Kitchen Project" class="client-img">
                         </div>
                         <div class="col-7">
                             <div class="testimonial-body">
@@ -539,7 +549,7 @@
                 <div class="testimonial-card">
                     <div class="row g-0 align-items-center h-100">
                         <div class="col-5">
-                            <img src="./assets/img/kitchen-img.png" alt="Kitchen Project" class="client-img">
+                            <img src="./assets/img/f2.png" alt="Kitchen Project" class="client-img">
                         </div>
                         <div class="col-7">
                             <div class="testimonial-body">
@@ -560,7 +570,7 @@
                 <div class="testimonial-card">
                     <div class="row g-0 align-items-center h-100">
                         <div class="col-5">
-                            <img src="./assets/img/kitchen-img.png" alt="Kitchen Project" class="client-img">
+                            <img src="./assets/img/f3.png" alt="Kitchen Project" class="client-img">
                         </div>
                         <div class="col-7">
                             <div class="testimonial-body">

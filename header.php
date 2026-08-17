@@ -13,72 +13,85 @@
     <link rel="stylesheet" href="./assets/style.css">
 
 
- 
+
 
 </head>
 
 <body>
 
-    <header class="navbar-section">
-        <div class="container-fluid container-lg">
-            <nav class="navbar navbar-expand-lg p-0">
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg new-side-slider-navbar sticky-top">
+        <div class="container-fluid px-lg-5">
 
-                <!-- Logo -->
-                <a class="navbar-brand" href="index.php">
-                    <!-- SVG Sun/M Icon matching original brand -->
-                    <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22 80V35L42 62L62 35V80" stroke="#69290e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M42 12V22M20 20L27 27M64 20L57 27M8 42H18M76 42H66" stroke="#69290e" stroke-width="5" stroke-linecap="round" />
-                    </svg>
-                    <div class="logo-text">
-                        <span class="brand-title">Mega Modular</span>
-                        <span class="brand-subtitle">Industries</span>
-                    </div>
-                </a>
+            <!-- Logo -->
+            <a class="brand-wrapper" href="#">
+                <i class="fa-solid fa-sun brand-icon"></i>
+                <div class="brand-text">
+                    <span class="brand-title">MEGA MODULAR</span>
+                    <span class="brand-subtitle">&mdash; INDUSTRIES &mdash;</span>
+                </div>
+            </a>
 
-                <!-- Mobile Toggle Button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+            <!-- Mobile Toggle Button (Opens Side Offcanvas) -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Offcanvas Side Slide Menu -->
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <!-- Offcanvas Slide Drawer -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title font-weight-bold" id="offcanvasNavbarLabel" style="color: var(--brand-brown);">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
 
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title brand-title" id="offcanvasNavbarLabel">Mega Modular</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
+                <div class="offcanvas-body align-items-center justify-content-end">
+                    <!-- Menu Items -->
+                    <ul class="navbar-nav me-lg-4 align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  " aria-current="page" href="about.php">About Us</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#">Directions</a>
+                        </li> -->
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.php">Projects</a>
+                        </li>
 
-                    <div class="offcanvas-body">
-                        <!-- Navigation Links -->
-                        <ul class="navbar-nav mobile-nav mx-auto align-items-lg-center">
-                            <li class="nav-item">
-                                <a class="nav-link<?= $currentPage === 'index.php' ? ' active' : '' ?>" href="index.php">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link<?= $currentPage === 'about.php' ? ' active' : '' ?>" href="about.php">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link<?= $currentPage === 'products.php' ? ' active' : '' ?>" href="products.php">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link<?= $currentPage === 'get-quotation.php' ? ' active' : '' ?>" href="get-quotation.php">Get Quotation</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link<?= $currentPage === 'contact.php' ? ' active' : '' ?>" href="contact.php">Contact</a>
-                            </li>
-                        </ul>
+                         <li class="nav-item">
+                            <a class="nav-link" href="get-quotation.php">Get Quotation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact Us</a>
+                        </li>
+                    </ul>
 
-                        <!-- Right Call CTA Button -->
-                        <div class="d-flex align-items-center">
-                            <a href="tel:+919000000000" class="btn-call">
-                                <i class="fa-solid fa-phone"></i> +91 90000 00000
-                            </a>
-                        </div>
+                    <!-- Phone Button -->
+                    <div class="mt-3 mt-lg-0">
+                        <a href="tel:+919000000000" class="btn-phone">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+91 90000 00000</span>
+                        </a>
                     </div>
 
                 </div>
+            </div>
 
-            </nav>
         </div>
-    </header>
+    </nav>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Active State Switching Script -->
+    <script>
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.navbar-nav .nav-link').forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>

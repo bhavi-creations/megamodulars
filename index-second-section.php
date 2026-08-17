@@ -195,7 +195,7 @@
         <div class="row g-4 align-items-center">
           <!-- Interior Image -->
           <div class="col-md-5">
-            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop" 
+            <img src="./assets/img/kitchen-img.png"  class="img-fluid"
                  alt="Kitchen Interior" 
                  class="img-fluid rounded-4 shadow-sm section-img w-100 object-fit-cover">
           </div>
@@ -214,7 +214,7 @@
               <span>A venture of <strong class="text-brand">Nayan Groups</strong></span>
             </div>
             
-            <a href="#" class="btn btn-custom">
+            <a href="about.php" class="btn btn-custom">
               KNOW MORE <i class="fa-solid font-arrow-right ms-2 fa-arrow-right"></i>
             </a>
           </div>
@@ -271,7 +271,7 @@
           <!-- Map Image Preview -->
           <div class="col-md-5">
             <div class="map-card p-2 bg-white rounded-3 shadow-sm border">
-              <img src="https://maps.googleapis.com/maps/api/staticmap?center=Kukatpally,Hyderabad&zoom=14&size=400x400&sensor=false&key=YOUR_KEY" 
+              <img src="https://share.google/KfGCrmmpmC9xsHZ6H" 
                    alt="Map Location" 
                    class="img-fluid rounded-2 w-100">
             </div>

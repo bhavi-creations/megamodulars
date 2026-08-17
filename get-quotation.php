@@ -26,27 +26,27 @@ include 'header.php';
 
                     <div class="option-grid">
                         <div class="option-card active" data-layout="L-Shaped Kitchen" data-baseprice="245000">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2544/2544087.png" alt="L-Shaped" class="option-img">
+                            <img src="./assets/img/lshape.png" alt="L-Shaped" class="option-img">
                             <span class="option-label">L-Shaped</span>
                         </div>
                         <div class="option-card" data-layout="U-Shaped Kitchen" data-baseprice="280000">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2544/2544087.png" alt="U-Shaped" class="option-img">
+                            <img src="./assets/img/ushaped.png" alt="U-Shaped" class="option-img">
                             <span class="option-label">U-Shaped</span>
                         </div>
                         <div class="option-card" data-layout="Straight Kitchen" data-baseprice="190000">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2544/2544087.png" alt="Straight" class="option-img">
+                            <img src="./assets/img/straight.png" alt="Straight" class="option-img">
                             <span class="option-label">Straight</span>
                         </div>
                         <div class="option-card" data-layout="Parallel Kitchen" data-baseprice="260000">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2544/2544087.png" alt="Parallel" class="option-img">
+                            <img src="./assets/img/parallel.png" alt="Parallel" class="option-img">
                             <span class="option-label">Parallel</span>
                         </div>
                         <div class="option-card" data-layout="Island Kitchen" data-baseprice="320000">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2544/2544087.png" alt="Island" class="option-img">
+                            <img src="./assets/img/island.png" alt="Island" class="option-img">
                             <span class="option-label">Island</span>
                         </div>
                         <div class="option-card" data-layout="G-Shaped Kitchen" data-baseprice="350000">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2544/2544087.png" alt="G-Shaped" class="option-img">
+                            <img src="./assets/img/g-shape.png" alt="G-Shaped" class="option-img">
                             <span class="option-label">G-Shaped</span>
                         </div>
                     </div>
@@ -82,10 +82,10 @@ include 'header.php';
                             <div class="area-title">151 - 200</div>
                             <div class="area-sub">sq.ft</div>
                         </div>
-                        <div class="area-card" data-area="Custom Size" data-multiplier="1.8">
+                        <!-- <div class="area-card" data-area="Custom Size" data-multiplier="1.8">
                             <div class="area-title"><i class="fa-regular fa-pen-to-square"></i> Custom</div>
                             <div class="area-sub">Enter Size</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

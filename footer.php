@@ -8,14 +8,16 @@
                 <div class="col-lg-3 col-md-6 col-border-right">
                     <div class="d-flex align-items-center gap-2 mb-2">
                         <!-- Logo Sun SVG Icon -->
-                        <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M50 5 V15 M25 15 L32 22 M75 15 L68 22 M10 38 L20 40 M90 38 L80 40" stroke="#c68a4c" stroke-width="5" stroke-linecap="round"/>
                             <path d="M30 75 V38 L50 60 L70 38 V75" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                         <div class="lh-1">
                             <span class="footer-logo-title d-block">MEGA MODULAR</span>
                             <small class="footer-logo-sub text-uppercase">INDUSTRIES</small>
-                        </div>
+                        </div> -->
+
+                        <img src="./assets/img/Mega Modular Final Logo PNG - 2@3x.png" alt="">
                     </div>
                     <p class="brand-desc">
                         We design, manufacture and install premium modular kitchens and furniture with unmatched quality and precision.

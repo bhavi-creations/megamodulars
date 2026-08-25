@@ -25,11 +25,13 @@
 
             <!-- Logo -->
             <a class="brand-wrapper" href="#">
-                <i class="fa-solid fa-sun brand-icon"></i>
-                <div class="brand-text">
+                <!-- <i class="fa-solid fa-sun brand-icon"></i> -->
+                <!-- <div class="brand-text">
                     <span class="brand-title">MEGA MODULAR</span>
                     <span class="brand-subtitle">&mdash; INDUSTRIES &mdash;</span>
-                </div>
+                </div> -->
+
+                <img src="./assets/img/logo1.png" alt="" style="width: 250px;height:auto;">
             </a>
 
             <!-- Mobile Toggle Button (Opens Side Offcanvas) -->

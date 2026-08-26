@@ -55,14 +55,12 @@
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
                             <div>
-                                Sy.No. 125/1, Industrial Area,<br>
-                                Kukatpally, Hyderabad – 500072,<br>
-                                Telangana, India.
+                              Plot no - 1, APIIC PHASE II, <br> AUTONAGAR, SARPAVARAM, KAKINADA, 533005
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-phone"></i>
-                            <div>+91 90000 00000</div>
+                            <div>+91 99664 71714</div>
                         </li>
                         <li>
                             <i class="fa-regular fa-envelope"></i>

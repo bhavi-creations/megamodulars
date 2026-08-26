@@ -73,9 +73,9 @@
 
                     <!-- Phone Button -->
                     <div class="mt-3 mt-lg-0">
-                        <a href="tel:+919000000000" class="btn-phone">
+                        <a href="tel:+919966471714" class="btn-phone">
                             <i class="fa-solid fa-phone"></i>
-                            <span>+91 90000 00000</span>
+                            <span>+91 99664 71714</span>
                         </a>
                     </div>
 

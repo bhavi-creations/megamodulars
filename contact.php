@@ -84,11 +84,11 @@
                         <span>OR</span>
                     </div>
 
-                    <a href="https://wa.me/919000000000" target="_blank" class="btn-whatsapp">
+                    <a href="https://wa.me/919966471714" target="_blank" class="btn-whatsapp">
                         <i class="fa-brands fa-whatsapp fs-5"></i> CHAT ON WHATSAPP
                     </a>
 
-                    <span class="phone-footer">+91 90000 00000</span>
+                    <span class="phone-footer">+91 99664 71714</span>
 
                 </div>
 
@@ -99,7 +99,7 @@
                         <!-- Panel Top Heading -->
                         <div class="exp-header">
                             <h5><i class="fa-solid fa-location-dot text-white me-1"></i> Visit Our Experience Center</h5>
-                            <p>See our modular kitchens, materials and finishes up close. Our experts are ready to help you.</p>
+                            <p>Plot no - 1, APIIC PHASE II, AUTONAGAR, SARPAVARAM, KAKINADA, 533005</p>
                         </div>
 
                         <!-- Panel Image -->
@@ -116,7 +116,7 @@
                                         <div class="info-icon"><i class="fa-solid fa-store"></i></div>
                                         <div>
                                             <h6 class="info-title">Showroom Address</h6>
-                                            <p class="info-text">Sy No. 123/1, Industrial Area,<br>Kukatpally, Hyderabad - 500072,<br>Telangana, India.</p>
+                                            <p class="info-text">Sarpavaram Main Rd, Auto Nagar, <br> Kakinada, Sarpavaram,  <br> Andhra Pradesh 533001</p>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                                         <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                                         <div>
                                             <h6 class="info-title">Call Us</h6>
-                                            <p class="info-text">+91 90000 00000<br>+91 91000 00000</p>
+                                            <p class="info-text">+91 99664 71714</p>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                         <div class="info-icon"><i class="fa-regular fa-envelope"></i></div>
                                         <div>
                                             <h6 class="info-title">Email Us</h6>
-                                            <p class="info-text">info@megamodular.com<br>support@megamodular.com</p>
+                                            <p class="info-text">info@megamodular.com</p>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                         <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
                                         <div>
                                             <h6 class="info-title">Working Hours</h6>
-                                            <p class="info-text">Mon - Sat : 9:30 AM - 6:30 PM<br>Sunday : Closed</p>
+                                            <p class="info-text">24/7 Availabel</p>
                                         </div>
                                     </div>
                                 </div>

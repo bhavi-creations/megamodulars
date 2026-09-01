@@ -1,6 +1,7 @@
 <?php
 // Include Mail Integration Script
 require_once 'send-mailer.php';
+session_start();
 
 // Database & Configuration Settings
 $db_host = 'localhost';
@@ -11,6 +12,12 @@ $db_name = 'quotation_db';
 $admin_email = 'manimalladi05@gmail.com'; // Admin Email ID
 
 $message_status = "";
+$show_success_modal = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_SESSION['quotation_submitted'])) {
+    $show_success_modal = true;
+    unset($_SESSION['quotation_submitted']);
+}
 
 // Form Submission Logic
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) {
@@ -165,6 +172,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
             $adminMail  = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $email_body);
 
             if ($clientMail) {
+                $show_success_modal = true;
+                $_SESSION['quotation_submitted'] = true;
                 $message_status = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                     <strong>Success!</strong> Quotation request saved and confirmation email dispatched.
                     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
@@ -181,6 +190,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
         $stmt->close();
         $conn->close();
     }
+}
+
+// Redirect after a successful POST so browser refresh cannot submit the form again.
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
+    header('Location: testing.php');
+    exit;
 }
 ?>
 
@@ -239,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
     <div class="container bg-white p-4 rounded shadow-sm" style="max-width: 920px;">
         <?= $message_status ?>
 
-        <form id="quotationForm" method="POST" action="">
+        <form id="quotationForm" method="POST" action="" onsubmit="prepareJSON()">
             <!-- Hidden Inputs for Form State -->
             <input type="hidden" name="selected_layout" id="input_layout" value="Kitchen">
             <input type="hidden" name="selected_surface" id="input_surface" value="Laminate">
@@ -330,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
             </div>
 
             <!-- SUMMARY PANEL -->
-            <div class="bg-light p-3 rounded mb-4 border">
+            <div class="bg-light p-3 rounded mb-4 border d-none">
                 <h6 class="fw-bold text-uppercase border-bottom pb-2">Selected Summary</h6>
                 <div class="row g-3">
                     <div class="col-md-6">
@@ -368,7 +383,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                         <label class="form-label">Phone Number <span class="text-danger">*</span></label>
                         <input type="tel" name="phone" id="form_phone" class="form-control" required placeholder="Enter phone number">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 d-none">
                         <label class="form-label">Total Estimated Summary</label>
                         <input type="text" id="total_area_display" class="form-control bg-light" readonly placeholder="Auto Calculated">
                     </div>
@@ -377,21 +392,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                         <textarea name="notes" id="form_notes" class="form-control" rows="2" placeholder="Mention special requirements or preferences..."></textarea>
                     </div>
                     <div class="col-12 text-end">
-                        <button type="button" onclick="reviewAndOpenModal()" class="btn btn-success px-4">Submit & Review Request</button>
+                        <button type="submit" name="submit_quotation" class="btn btn-success px-4">Submit Request</button>
                     </div>
                 </div>
             </div>
 
             <!-- POPUP REVIEW MODAL -->
-            <div class="modal fade" id="summaryModal" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title">Confirm Your Quotation Request</h5>
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">Quotation Request Submitted</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row g-3">
+                            <div class="alert alert-success">Your quotation details were saved and the confirmation email was sent successfully.</div>
+                            <div class="row g-3 d-none">
                                 <div class="col-md-6">
                                     <h6><strong>Customer Details:</strong></h6>
                                     <p class="mb-1"><strong>Name:</strong> <span id="pop_name"></span></p>
@@ -406,9 +422,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                                     <p class="mb-1 text-muted small"><strong>Applied Rates:</strong> SFT: ₹<span id="pop_sft_rate"></span> | CFT: ₹<span id="pop_cft_rate"></span></p>
                                 </div>
                             </div>
-                            <hr>
-                            <h6><strong>Calculated Measurements & Pricing Breakdown:</strong></h6>
-                            <table class="table table-bordered table-sm text-center">
+                            <hr class="d-none">
+                            <h6 class="d-none"><strong>Calculated Measurements & Pricing Breakdown:</strong></h6>
+                            <table class="table table-bordered table-sm text-center d-none">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Category</th>
@@ -429,13 +445,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="alert alert-info text-end fw-bold mb-0">
+                            <div class="alert alert-info text-end fw-bold mb-0 d-none">
                                 Grand Total Amount: ₹ <span id="pop_grand_total"></span>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Edit Details</button>
-                            <button type="submit" name="submit_quotation" class="btn btn-success">Confirm & Submit Email</button>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -704,37 +719,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
             document.getElementById('input_dynamic_json').value = JSON.stringify(payload);
         }
 
-        function reviewAndOpenModal() {
-            let form = document.getElementById('quotationForm');
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            prepareJSON();
-
-            document.getElementById('pop_name').innerText = document.getElementById('form_full_name').value;
-            document.getElementById('pop_email').innerText = document.getElementById('form_email').value;
-            document.getElementById('pop_phone').innerText = document.getElementById('form_phone').value;
-
-            document.getElementById('pop_layout').innerText = document.getElementById('input_layout').value;
-            document.getElementById('pop_surface').innerText = document.getElementById('input_surface').value;
-            document.getElementById('pop_core').innerText = document.getElementById('input_core').value;
-
-            document.getElementById('pop_sft_rate').innerText = document.getElementById('hid_sft_rate').value;
-            document.getElementById('pop_cft_rate').innerText = document.getElementById('hid_cft_rate').value;
-
-            document.getElementById('pop_cft').innerText = document.getElementById('hid_total_panel_cft').value;
-            document.getElementById('pop_cft_cost').innerText = document.getElementById('hid_total_panel_cost').value;
-
-            document.getElementById('pop_sft').innerText = document.getElementById('hid_total_frame_sft').value;
-            document.getElementById('pop_sft_cost').innerText = document.getElementById('hid_total_frame_cost').value;
-
-            document.getElementById('pop_grand_total').innerText = document.getElementById('hid_grand_total_amount').value;
-
-            let modal = new bootstrap.Modal(document.getElementById('summaryModal'));
-            modal.show();
-        }
+        <?php if ($show_success_modal): ?>
+        document.addEventListener('DOMContentLoaded', function() {
+            new bootstrap.Modal(document.getElementById('successModal')).show();
+        });
+        <?php endif; ?>
 
         // Initial Setup
         addPanel();

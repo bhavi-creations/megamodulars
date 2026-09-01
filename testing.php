@@ -8,7 +8,7 @@ require_once 'send-mailer.php';
 $db_host = 'localhost';
 $db_user = 'root';
 $db_pass = '';
-$db_name = 'quotation_db';
+$db_name = 'anishdental';
 
 $admin_email = 'manimalladi05@gmail.com'; // Admin Email ID
 

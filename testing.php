@@ -1,7 +1,8 @@
 <?php
+session_start();
+
 // Include Mail Integration Script
 require_once 'send-mailer.php';
-session_start();
 
 // Database & Configuration Settings
 $db_host = 'localhost';

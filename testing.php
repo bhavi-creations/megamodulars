@@ -4,12 +4,6 @@ session_start();
 // Include Mail Integration Script
 require_once 'send-mailer.php';
 
-// Database & Configuration Settings
-$db_host = 'localhost';
-$db_user = 'root';
-$db_pass = '';
-$db_name = 'anishdental';
-
 $admin_email = 'manimalladi05@gmail.com'; // Admin Email ID
 
 $message_status = "";
@@ -22,13 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_SESSION['quotation_submitte
 
 // Form Submission Logic
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) {
-    $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-    if ($conn->connect_error) {
-        $message_status = "<div class='alert alert-danger'>Database Connection Failed: " . htmlspecialchars($conn->connect_error) . "</div>";
-    } else {
-        // Sanitize input values
-        $full_name = trim($_POST['full_name']);
+    // Sanitize input values
+    $full_name = trim($_POST['full_name']);
         $email = trim($_POST['email']);
         $phone = trim($_POST['phone']);
         $layout = trim($_POST['selected_layout']);
@@ -47,13 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
         $total_frame_cost = floatval($_POST['total_frame_cost']);
         $grand_total_amount = floatval($_POST['grand_total_amount']);
 
-        // Secure Insert using Prepared Statements
-        $stmt = $conn->prepare("INSERT INTO quotations (full_name, email, phone, layout, surface_finish, core_material, unit_type, dynamic_details, notes, rate_sft, rate_cft, total_cft, total_sft, grand_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssssddddd", $full_name, $email, $phone, $layout, $surface, $core, $unit_type, $dynamic_data_json, $notes, $applied_sft_rate, $applied_cft_rate, $total_panel_cft, $total_frame_sft, $grand_total_amount);
-
-        if ($stmt->execute()) {
-
-            // Build dynamic items table for email
+    // Build dynamic items table for email
             $decoded_items = json_decode($dynamic_data_json, true);
             $items_html = "";
 
@@ -172,30 +155,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
             </body>
             </html>";
 
-            // Send the complete quotation to the client, and the internal summary to admin.
+            // Send the quotation to both the client and the configured mail recipient.
             $admin_email_body = preg_replace('/<!-- CLIENT_ONLY_START -->.*?<!-- CLIENT_ONLY_END -->/s', '', $email_body);
             $clientMail = dispatchQuotationMail($email, $full_name, "Quotation Confirmation - Mega Modulars", $email_body);
             $adminMail  = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $admin_email_body);
 
-            if ($clientMail) {
+            if ($clientMail && $adminMail) {
                 $show_success_modal = true;
                 $_SESSION['quotation_submitted'] = true;
                 $message_status = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                    <strong>Success!</strong> Quotation request saved and confirmation email dispatched.
+                    <strong>Success!</strong> Quotation details sent by email.
                     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                 </div>";
             } else {
                 $message_status = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                    <strong>Data Saved!</strong> Record stored in Database, but email sending failed. Please check SMTP settings.
+                    <strong>Email failed!</strong> One or both emails could not be sent. Please check SMTP settings.
                     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                 </div>";
             }
-        } else {
-            $message_status = "<div class='alert alert-danger'>Database Error: " . htmlspecialchars($stmt->error) . "</div>";
-        }
-        $stmt->close();
-        $conn->close();
-    }
 }
 
 // Redirect after a successful POST so browser refresh cannot submit the form again.

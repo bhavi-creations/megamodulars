@@ -1,3 +1,48 @@
+<?php 
+// 1. Database Connection Configuration
+$host = "localhost";
+$db_user = "root"; // Mee DB Username ikkada ivvandi
+$db_pass = "";     // Mee DB Password ikkada ivvandi
+$db_name = "quotation_db";
+
+$conn = new mysqli($host, $db_user, $db_pass, $db_name);
+
+// Check Connection
+if ($conn->connect_error) {
+    die("Database Connection Failed: " . $conn->connect_error);
+}
+
+$message_sent = false;
+$error_message = "";
+
+// 2. Form Submission Handling & Database Insertion
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_quote'])) {
+    $layout   = $_POST['kitchen_layout'] ?? '';
+    $core     = $_POST['core_material'] ?? '';
+    $finish   = $_POST['surface_finish'] ?? '';
+    $unit     = $_POST['measurement_unit'] ?? '';
+    $rate     = $_POST['rate_per_unit'] ?? '';
+    $price    = $_POST['calculated_total_price'] ?? '';
+    
+    $name     = $_POST['client_name'] ?? '';
+    $email    = $_POST['client_email'] ?? '';
+    $phone    = $_POST['client_phone'] ?? '';
+    $area     = $_POST['client_area'] ?? 0;
+    $msg      = $_POST['client_message'] ?? '';
+
+    $stmt = $conn->prepare("INSERT INTO quotations_123 (kitchen_layout, core_material, surface_finish, measurement_unit, rate_per_unit, calculated_total_price, client_name, client_email, client_phone, client_area, client_message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssssds", $layout, $core, $finish, $unit, $rate, $price, $name, $email, $phone, $area, $msg);
+
+    if ($stmt->execute()) {
+        $message_sent = true;
+    } else {
+        $error_message = "Data save avvaledu: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+?>
+
 <?php include 'header.php'; ?>
     <style>
         .selectable-card {
@@ -67,6 +112,20 @@
 <body class="bg-light p-3 p-md-5">
 
     <div class="container bg-white p-4 rounded-4 shadow-sm" style="max-width: 1000px;">
+
+        <?php if ($message_sent): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Mee request successfully database lo save aindhi.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($error_message)): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo $error_message; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
 
         <!-- LOGIN SECTION -->
         <div id="login-section" class="py-4">
@@ -193,7 +252,6 @@
                     </div>
                 </div>
 
-                <!-- Custom Input Field for Aluminium -->
                 <div class="mt-3 custom-input-container" id="aluminium-input-wrapper">
                     <div class="card p-3 bg-light border-0">
                         <label for="custom-aluminium-price" class="form-label fw-bold text-dark">Enter Custom Price for Aluminium (per Selected Unit):</label>
@@ -247,7 +305,7 @@
 
             <hr class="my-4 text-muted">
 
-            <!-- Step 4: Measurement Unit & Area Calculation (UPDATED) -->
+            <!-- Step 4: Measurement Unit & Area Calculation -->
             <div class="mb-4">
                 <div class="d-flex align-items-center mb-3">
                     <span class="step-number">4</span>
@@ -301,14 +359,11 @@
                 </div>
             </div>
 
-            <!-- EMAIL ENQUIRY FORM INTEGRATION -->
+            <!-- ENQUIRY FORM INTEGRATION -->
             <div class="p-4 border rounded-3 bg-light mt-4">
                 <h5 class="fw-bold text-dark mb-3">Request Official Quotation</h5>
 
-                <form action="https://api.web3forms.com/submit" method="POST" id="quote-form">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="New Kitchen Material Cost Estimation Request">
-
+                <form action="" method="POST" id="quote-form">
                     <!-- Hidden inputs dynamically synced with JavaScript -->
                     <input type="hidden" name="kitchen_layout" id="form-layout" value="L-Shaped">
                     <input type="hidden" name="core_material" id="form-core" value="Plywood">
@@ -339,7 +394,7 @@
                             <textarea class="form-control" name="client_message" id="client-message" rows="3" placeholder="Enter any specific preferences..."></textarea>
                         </div>
                         <div class="col-12 text-end">
-                            <button type="submit" class="btn btn-success fw-bold px-4 py-2">Submit Request via Email</button>
+                            <button type="submit" name="submit_quote" class="btn btn-success fw-bold px-4 py-2">Submit & Save Request</button>
                         </div>
                     </div>
                 </form>
@@ -355,76 +410,28 @@
 
         const priceData = {
             "Plywood": {
-                "Laminate": {
-                    sft: 750,
-                    cft: 1200
-                },
-                "Acrylic": {
-                    sft: 850,
-                    cft: 1500
-                },
-                "PVC": {
-                    sft: 700,
-                    cft: 1300
-                },
-                "PU": {
-                    sft: 850,
-                    cft: 1500
-                }
+                "Laminate": { sft: 750, cft: 1200 },
+                "Acrylic": { sft: 850, cft: 1500 },
+                "PVC": { sft: 700, cft: 1300 },
+                "PU": { sft: 850, cft: 1500 }
             },
             "HDHMR": {
-                "Laminate": {
-                    sft: 700,
-                    cft: 1100
-                },
-                "Acrylic": {
-                    sft: 800,
-                    cft: 1400
-                },
-                "PVC": {
-                    sft: 650,
-                    cft: 1200
-                },
-                "PU": {
-                    sft: 850,
-                    cft: 1700
-                }
+                "Laminate": { sft: 700, cft: 1100 },
+                "Acrylic": { sft: 800, cft: 1400 },
+                "PVC": { sft: 650, cft: 1200 },
+                "PU": { sft: 850, cft: 1700 }
             },
             "MDF": {
-                "Laminate": {
-                    sft: 650,
-                    cft: 1000
-                },
-                "Acrylic": {
-                    sft: 750,
-                    cft: 1300
-                },
-                "PVC": {
-                    sft: 600,
-                    cft: 1100
-                },
-                "PU": {
-                    sft: 800,
-                    cft: 1600
-                }
+                "Laminate": { sft: 650, cft: 1000 },
+                "Acrylic": { sft: 750, cft: 1300 },
+                "PVC": { sft: 600, cft: 1100 },
+                "PU": { sft: 800, cft: 1600 }
             },
             "Real Wood": {
-                "Laminate": {
-                    sft: 850,
-                    cft: 1400
-                },
-                "Acrylic": {
-                    sft: 950,
-                    cft: 1700
-                },
-                "PVC": {
-                    sft: 800,
-                    cft: 1500
-                },
-                "PU": {
-                    sft: 1000,
-                    cft: 2000
-                }
+                "Laminate": { sft: 850, cft: 1400 },
+                "Acrylic": { sft: 950, cft: 1700 },
+                "PVC": { sft: 800, cft: 1500 },
+                "PU": { sft: 1000, cft: 2000 }
             }
         };
 
@@ -472,7 +479,6 @@
 
             customAluminiumInput.addEventListener('input', calculateTotal);
             areaCalculatorInput.addEventListener('input', function() {
-                // Sync with bottom enquiry form field
                 clientAreaFormInput.value = this.value;
                 calculateTotal();
             });
@@ -483,7 +489,6 @@
                 const activeCore = document.querySelector('#core-group .selectable-card.active').getAttribute('data-value');
                 const activeUnit = document.querySelector('#unit-group .selectable-card.active').getAttribute('data-value');
 
-                // Update Labels
                 const unitUpper = activeUnit.toUpperCase();
                 document.getElementById('area-unit-label').textContent = unitUpper;
                 document.getElementById('area-unit-span').textContent = unitUpper;
@@ -504,7 +509,6 @@
                 const rateString = rate ? `₹${rate.toLocaleString('en-IN')}` : '₹0';
                 const totalString = grandTotal ? `₹${grandTotal.toLocaleString('en-IN')}` : '₹0';
 
-                // Update UI Summary
                 document.getElementById('summary-layout').textContent = activeLayout;
                 document.getElementById('summary-combination').textContent = `${activeCore} + ${activeFinish}`;
                 document.getElementById('summary-unit').textContent = unitUpper;
@@ -512,7 +516,6 @@
                 document.getElementById('summary-area-display').textContent = `${qty} ${unitUpper}`;
                 document.getElementById('summary-total').textContent = totalString;
 
-                // Sync Hidden Form Fields for Web3Forms Email Submission
                 document.getElementById('form-layout').value = activeLayout;
                 document.getElementById('form-core').value = activeCore;
                 document.getElementById('form-finish').value = activeFinish;

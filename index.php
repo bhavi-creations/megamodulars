@@ -118,7 +118,7 @@
                             </li>
                             <li>
                                 <i class="fa-solid fa-phone"></i>
-                                <div>+91 99664 71714</div>
+                                <div>+91 90000 00000</div>
                             </li>
                             <li>
                                 <i class="fa-regular fa-clock"></i>

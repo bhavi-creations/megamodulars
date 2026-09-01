@@ -116,7 +116,8 @@
                                         <div class="info-icon"><i class="fa-solid fa-store"></i></div>
                                         <div>
                                             <h6 class="info-title">Showroom Address</h6>
-                                            <p class="info-text">Sarpavaram Main Rd, Auto Nagar, <br> Kakinada, Sarpavaram,  <br> Andhra Pradesh 533001</p>
+                                            <p class="info-text">Plot no - 1, APIIC PHASE II,
+                                                AUTONAGAR, SARPAVARAM, KAKINADA, 533005</p>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +147,7 @@
                                         <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
                                         <div>
                                             <h6 class="info-title">Working Hours</h6>
-                                            <p class="info-text">24/7 Availabel</p>
+                                            <p class="info-text">24/7 Available</p>
                                         </div>
                                     </div>
                                 </div>
@@ -177,7 +178,7 @@
 
                 <div class="map-container">
                     <!-- Replace src URL with your exact Google Business Map Embed Link -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3815.820023428833!2d82.2506152!3d16.983400900000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3829915d3063a9%3A0x357d06d49d4e389a!2sBhavi%20Creations%20Pvt%20Ltd%20-%20Digital%20Marketing%20company%20in%20kakinada!5e0!3m2!1sen!2sin!4v1786688860508!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3815.5597351380547!2d82.212643!3d16.996192999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3787678ecc66fd%3A0x511353200ef3ed5e!2sMEGA%20MODULARS%20INTERIORS%20%26%20ARCHITECTS!5e0!3m2!1sen!2sin!4v1787725683561!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
             </div>
 
@@ -280,7 +281,7 @@
 
                 <div>
                     <a href="contact.php" class="btn-book">
-                       Contact us<i class="fa-solid fa-arrow-right"></i>
+                        Contact us<i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 

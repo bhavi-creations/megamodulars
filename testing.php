@@ -100,8 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                     <div class='header'>
                         <h2 style='margin:0;'>Quotation Confirmation - Mega Modulars</h2>
                     </div>
+                    <!-- CLIENT_ONLY_START -->
                     <p>Dear <strong>{$safe_name}</strong>,</p>
                     <p>Thank you for submitting your custom quotation request. Here are your selection details:</p>
+                    <!-- CLIENT_ONLY_END -->
                     
                     <table>
                         <tr><th>Customer Name</th><td>{$safe_name}</td></tr>
@@ -137,6 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                         Grand Total Estimated Amount: ₹ " . number_format($grand_total_amount, 2) . "
                     </div>
 
+                    <!-- CLIENT_ONLY_START -->
                     <p style='margin-top: 15px;'><strong>MEASSAGE :</strong><br>{$safe_notes}</p>
                     <p>We will review your detailed measurements and get back to you shortly.</p>
 
@@ -163,13 +166,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
 
 
             <p>Transport extra</p>
+                    <!-- CLIENT_ONLY_END -->
                 </div>
             </body>
             </html>";
 
-            // Call mail dispatch helper
+            // Send the complete quotation to the client, and the internal summary to admin.
+            $admin_email_body = preg_replace('/<!-- CLIENT_ONLY_START -->.*?<!-- CLIENT_ONLY_END -->/s', '', $email_body);
             $clientMail = dispatchQuotationMail($email, $full_name, "Quotation Confirmation - Mega Modulars", $email_body);
-            $adminMail  = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $email_body);
+            $adminMail  = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $admin_email_body);
 
             if ($clientMail) {
                 $show_success_modal = true;

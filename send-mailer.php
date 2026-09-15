@@ -17,8 +17,8 @@ function dispatchQuotationMail($toEmail, $toName, $subject, $bodyHTML)
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'manimalladi05@gmail.com';
-        $mail->Password   = 'txafnaqqegpfiytf';
+        $mail->Username   = 'reach.mmi26@gmail.com';
+        $mail->Password   = 'ituspecwpkaupqqh';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
@@ -27,7 +27,7 @@ function dispatchQuotationMail($toEmail, $toName, $subject, $bodyHTML)
         $mail->clearCustomHeaders();
 
         // Sender & Recipient Details
-        $mail->setFrom('manimalladi05@gmail.com', 'Mega Modulars');
+        $mail->setFrom('reach.mmi26@gmail.com', 'Mega Modulars');
         $mail->addAddress($toEmail, $toName);
 
         // Mail Content Config

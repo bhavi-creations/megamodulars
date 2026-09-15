@@ -4,7 +4,7 @@ session_start();
 // Include Mail Integration Script
 require_once __DIR__ . '/send-mailer.php';
 
-$admin_email = 'manimalladi05@gmail.com'; // Admin Email ID
+$admin_email = 'reach.mmi26@gmail.com'; // Admin Email ID
 
 $message_status = "";
 $show_success_modal = false;

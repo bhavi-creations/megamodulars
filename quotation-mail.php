@@ -37,13 +37,13 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'manimalladi05@gmail.com';
-    $mail->Password = 'txafnaqqegpfiytf';
+    $mail->Username = 'reach.mmi26@gmail.com';
+    $mail->Password = 'ituspecwpkaupqqh';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
-    $mail->setFrom('manimalladi05@gmail.com', 'Mega Modular Industries');
-    $mail->addAddress('manimalladi05@gmail.com', 'Mega Modular Industries');
+    $mail->setFrom('reach.mmi26@gmail.com', 'Mega Modular Industries');
+    $mail->addAddress('reach.mmi26@gmail.com', 'Mega Modular Industries');
     if ($email !== '') {
         $mail->addReplyTo($email, $name);
     }

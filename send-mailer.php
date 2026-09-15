@@ -3,7 +3,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Reusable SMTP Dispatcher Function for Customer & Admin
@@ -18,7 +18,7 @@ function dispatchQuotationMail($toEmail, $toName, $subject, $bodyHTML)
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'manimalladi05@gmail.com';
-        $mail->Password   = 'nsmgbxkyqxqrwfjh';
+        $mail->Password   = 'txafnaqqegpfiytf';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
@@ -32,8 +32,10 @@ function dispatchQuotationMail($toEmail, $toName, $subject, $bodyHTML)
 
         // Mail Content Config
         $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
         $mail->Subject = $subject;
         $mail->Body    = $bodyHTML;
+        $mail->AltBody = html_entity_decode(strip_tags(str_replace(['</p>', '</tr>', '<br>', '<br />'], "\n", $bodyHTML)), ENT_QUOTES, 'UTF-8');
 
         $mail->send();
         return true;

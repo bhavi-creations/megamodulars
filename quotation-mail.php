@@ -38,7 +38,7 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'manimalladi05@gmail.com';
-    $mail->Password = 'rcaueajfwhczcrhm';
+    $mail->Password = 'txafnaqqegpfiytf';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 

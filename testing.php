@@ -2,7 +2,7 @@
 session_start();
 
 // Include Mail Integration Script
-require_once 'send-mailer.php';
+require_once __DIR__ . '/send-mailer.php';
 
 $admin_email = 'manimalladi05@gmail.com'; // Admin Email ID
 
@@ -15,7 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_SESSION['quotation_submitte
 }
 
 // Form Submission Logic
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!is_string($_POST['full_name'] ?? null) || trim($_POST['full_name']) === '' ||
+        !is_string($_POST['phone'] ?? null) || trim($_POST['phone']) === '' ||
+        !is_string($_POST['email'] ?? null) || !filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
+        $message_status = "<div class='alert alert-danger' role='alert'>Please enter your name, phone number and a valid email address.</div>";
+    } else {
     // Sanitize input values
     $full_name = trim($_POST['full_name']);
         $email = trim($_POST['email']);
@@ -86,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                     </div>
                     <!-- CLIENT_ONLY_START -->
                     <p>Dear <strong>{$safe_name}</strong>,</p>
-                    <p>Thank you for submitting your custom quotation request. Here are your selection details:</p>
+                    <p>Your appointment request has been submitted successfully. Our team will contact you to confirm the appointment date and time. Here are your quotation selection details:</p>
                     <!-- CLIENT_ONLY_END -->
                     
                     <table>
@@ -157,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
 
             // Send the quotation to both the client and the configured mail recipient.
             $admin_email_body = preg_replace('/<!-- CLIENT_ONLY_START -->.*?<!-- CLIENT_ONLY_END -->/s', '', $email_body);
-            $clientMail = dispatchQuotationMail($email, $full_name, "Quotation Confirmation - Mega Modulars", $email_body);
+            $clientMail = dispatchQuotationMail($email, $full_name, "Appointment Request Confirmation - Mega Modulars", $email_body);
             $adminMail  = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $admin_email_body);
 
             if ($clientMail && $adminMail) {
@@ -173,6 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_quotation'])) 
                     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                 </div>";
             }
+    }
 }
 
 // Redirect after a successful POST so browser refresh cannot submit the form again.
@@ -237,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
     <div class="container bg-white p-4 rounded shadow-sm" style="max-width: 920px;">
         <?= $message_status ?>
 
-        <form id="quotationForm" method="POST" action="" onsubmit="prepareJSON()">
+        <form id="quotationForm" method="POST" action="testing.php" onsubmit="prepareJSON()">
             <!-- Hidden Inputs for Form State -->
             <input type="hidden" name="selected_layout" id="input_layout" value="Kitchen">
             <input type="hidden" name="selected_surface" id="input_surface" value="Laminate">
@@ -389,7 +395,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="alert alert-success">Your quotation details were saved and the confirmation email was sent successfully.</div>
+                            <div class="alert alert-success">Your appointment request was submitted and your quotation details were emailed successfully. Our team will contact you to confirm the appointment date and time.</div>
                             <div class="row g-3 d-none">
                                 <div class="col-md-6">
                                     <h6><strong>Customer Details:</strong></h6>

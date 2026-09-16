@@ -44,12 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Build dynamic items table for email
             $decoded_items = json_decode($dynamic_data_json, true);
             $items_html = "";
+            $escape_item = static function ($value) {
+                return htmlspecialchars(is_scalar($value) ? (string) $value : '', ENT_QUOTES, 'UTF-8');
+            };
 
             if (!empty($decoded_items['panels'])) {
                 $items_html .= "<tr><th colspan='4' style='background:#e9ecef;'>Panels Detailed Breakdown</th></tr>";
                 foreach ($decoded_items['panels'] as $idx => $p) {
                     $num = $idx + 1;
+                    $p = array_map($escape_item, $p);
                     $items_html .= "<tr><td>Panel #{$num}</td><td>L: {$p['length']} | W: {$p['width']} | H: {$p['height']}</td><td colspan='2'>{$p['cft']}</td></tr>";
+                    $remark = $p['remark'] ?? '';
+                    $item_surface = $p['surface'] ?? '';
+                    $item_core = $p['core'] ?? '';
+                    $item_rate = $p['rate'] ?? '';
+                    $items_html .= "<tr><td colspan='4'><strong>Remark:</strong> {$remark}<br><strong>Surface Finish:</strong> {$item_surface} | <strong>Core Material:</strong> {$item_core}<br><strong>Rate per CFT:</strong> {$item_rate}</td></tr>";
                 }
             }
 
@@ -57,7 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $items_html .= "<tr><th colspan='4' style='background:#e9ecef;'>Frames Detailed Breakdown</th></tr>";
                 foreach ($decoded_items['frames'] as $idx => $f) {
                     $num = $idx + 1;
+                    $f = array_map($escape_item, $f);
                     $items_html .= "<tr><td>Frame #{$num}</td><td>L: {$f['length']} | B: {$f['breadth']}</td><td colspan='2'>{$f['sft']}</td></tr>";
+                    $remark = $f['remark'] ?? '';
+                    $item_surface = $f['surface'] ?? '';
+                    $item_core = $f['core'] ?? '';
+                    $item_rate = $f['rate'] ?? '';
+                    $items_html .= "<tr><td colspan='4'><strong>Remark:</strong> {$remark}<br><strong>Surface Finish:</strong> {$item_surface} | <strong>Core Material:</strong> {$item_core}<br><strong>Rate per SFT:</strong> {$item_rate}</td></tr>";
                 }
             }
 
@@ -99,9 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <tr><th>Email</th><td>{$safe_email}</td></tr>
                         <tr><th>Phone</th><td>{$safe_phone}</td></tr>
                         <tr><th>Selected Layout</th><td>{$safe_layout}</td></tr>
-                        <tr><th>Surface Finish</th><td>{$safe_surface}</td></tr>
-                        <tr><th>Core Material</th><td>{$safe_core}</td></tr>
-                        <tr><th>Applied Rates</th><td>SFT Rate: ₹ {$applied_sft_rate} | CFT Rate: ₹ {$applied_cft_rate}</td></tr>
+                        <tr><th>Materials &amp; Rates</th><td>See the selection and rate for each panel and frame below.</td></tr>
                     </table>
 
                     <h4>Calculated Area & Cost Breakdown</h4>
@@ -302,34 +315,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                         <button type="button" class="btn btn-sm btn-outline-primary" onclick="addFrame()">+ Add Frame</button>
                     </div>
                     <div id="frameContainer"></div>
-                </div>
-            </div>
-
-            <!-- 2. SURFACE FINISH -->
-            <div class="mb-4">
-                <h5 class="fw-bold d-flex align-items-center"><span class="badge-step">2</span> CHOOSE SURFACE FINISH</h5>
-                <div class="row row-cols-2 row-cols-md-5 g-2 mt-1">
-                    <?php foreach (['Laminate', 'Acrylic', 'PVC', 'PU', 'Aluminium'] as $idx => $finish): ?>
-                        <div class="col">
-                            <div class="selectable-card p-2 text-center surface-card <?= $idx === 0 ? 'active' : '' ?>" onclick="selectOption('input_surface', '<?= $finish ?>', this, 'surface-card')">
-                                <small class="fw-semibold"><?= $finish ?></small>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <!-- 3. CORE MATERIAL -->
-            <div class="mb-4">
-                <h5 class="fw-bold d-flex align-items-center"><span class="badge-step">3</span> CHOOSE CORE MATERIAL</h5>
-                <div class="row row-cols-2 row-cols-md-4 g-2 mt-1">
-                    <?php foreach (['Plywood', 'HDHMR', 'MDF', 'Real Wood'] as $idx => $core): ?>
-                        <div class="col">
-                            <div class="selectable-card p-2 text-center core-card <?= $idx === 0 ? 'active' : '' ?>" onclick="selectOption('input_core', '<?= $core ?>', this, 'core-card')">
-                                <small class="fw-semibold"><?= $core ?></small>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -554,9 +539,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
         let panelCount = 0;
         let frameCount = 0;
 
-        function getRates() {
-            let selectedCore = document.getElementById('input_core').value;
-            let selectedSurface = document.getElementById('input_surface').value;
+        function getRates(box = null) {
+            let selectedCore = box ? box.querySelector('.item-core').value : 'Plywood';
+            let selectedSurface = box ? box.querySelector('.item-surface').value : 'Laminate';
 
             if (PRICE_MATRIX[selectedCore] && PRICE_MATRIX[selectedCore][selectedSurface]) {
                 return PRICE_MATRIX[selectedCore][selectedSurface];
@@ -592,6 +577,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             }
         }
 
+        function itemMaterials(id) {
+            return `<div class="row g-2 mt-2">
+                <div class="col-md-6">
+                    <label for="${id}_surface" class="form-label fw-semibold small">CHOOSE SURFACE FINISH</label>
+                    <select id="${id}_surface" class="form-select form-select-sm item-surface" onchange="calculateAreas()">
+                        ${Object.keys(PRICE_MATRIX.Plywood).map(value => '<option>' + value + '</option>').join('')}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="${id}_core" class="form-label fw-semibold small">CHOOSE CORE MATERIAL</label>
+                    <select id="${id}_core" class="form-select form-select-sm item-core" onchange="calculateAreas()">
+                        ${Object.keys(PRICE_MATRIX).map(value => '<option>' + value + '</option>').join('')}
+                    </select>
+                </div>
+            </div>`;
+        }
+
         function addPanel() {
             panelCount++;
             const html = `
@@ -601,11 +603,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             <button type="button" class="btn-close btn-sm" onclick="removeElement('panel_row_${panelCount}')"></button>
         </div>
         <div class="row g-2">
-            <div class="col-md-3"><input type="number" step="any" min="0" class="form-control form-control-sm p-len" placeholder="Length" oninput="calculateAreas()"></div>
-            <div class="col-md-3"><input type="number" step="any" min="0" class="form-control form-control-sm p-width" placeholder="Width" oninput="calculateAreas()"></div>
-            <div class="col-md-3"><input type="number" step="any" min="0" class="form-control form-control-sm p-height" placeholder="Height" oninput="calculateAreas()"></div>
-            <div class="col-md-3"><input type="text" class="form-control form-control-sm p-area bg-light" readonly placeholder="Area (CFT)"></div>
+            <div class="col-md-2"><input type="number" step="any" min="0" class="form-control form-control-sm p-len" placeholder="Length" oninput="calculateAreas()"></div>
+            <div class="col-md-2"><input type="number" step="any" min="0" class="form-control form-control-sm p-width" placeholder="Width" oninput="calculateAreas()"></div>
+            <div class="col-md-2"><input type="number" step="any" min="0" class="form-control form-control-sm p-height" placeholder="Height" oninput="calculateAreas()"></div>
+            <div class="col-md-2"><input type="text" class="form-control form-control-sm p-area bg-light" readonly placeholder="Area (CFT)"></div>
+            <div class="col-md-4"><input type="text" class="form-control form-control-sm item-remark" aria-label="Panel remark" placeholder="Remark (e.g. Kitchen cabinet)"></div>
         </div>
+        ${itemMaterials('panel_' + panelCount)}
     </div>`;
             document.getElementById('panelContainer').insertAdjacentHTML('beforeend', html);
         }
@@ -619,10 +623,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             <button type="button" class="btn-close btn-sm" onclick="removeElement('frame_row_${frameCount}')"></button>
         </div>
         <div class="row g-2">
-            <div class="col-md-4"><input type="number" step="any" min="0" class="form-control form-control-sm f-len" placeholder="Length" oninput="calculateAreas()"></div>
-            <div class="col-md-4"><input type="number" step="any" min="0" class="form-control form-control-sm f-breadth" placeholder="Breadth" oninput="calculateAreas()"></div>
-            <div class="col-md-4"><input type="text" class="form-control form-control-sm f-area bg-light" readonly placeholder="Area (SFT)"></div>
+            <div class="col-md-3"><input type="number" step="any" min="0" class="form-control form-control-sm f-len" placeholder="Length" oninput="calculateAreas()"></div>
+            <div class="col-md-3"><input type="number" step="any" min="0" class="form-control form-control-sm f-breadth" placeholder="Breadth" oninput="calculateAreas()"></div>
+            <div class="col-md-3"><input type="text" class="form-control form-control-sm f-area bg-light" readonly placeholder="Area (SFT)"></div>
+            <div class="col-md-3"><input type="text" class="form-control form-control-sm item-remark" aria-label="Frame remark" placeholder="Remark (e.g. Door frame)"></div>
         </div>
+        ${itemMaterials('frame_' + frameCount)}
     </div>`;
             document.getElementById('frameContainer').insertAdjacentHTML('beforeend', html);
         }
@@ -636,6 +642,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             let rates = getRates();
 
 
+            let panelCost = 0;
+            let frameCost = 0;
             let totalPanelCFT = 0;
             document.querySelectorAll('#panelContainer .dynamic-box').forEach(box => {
                 let l = parseFloat(box.querySelector('.p-len').value) || 0;
@@ -644,6 +652,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                 let cft = l * w * h;
                 box.querySelector('.p-area').value = cft > 0 ? cft.toFixed(2) + ' CFT' : '';
                 totalPanelCFT += cft;
+                panelCost += cft * getRates(box).cft;
             });
 
             let totalFrameSFT = 0;
@@ -653,10 +662,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                 let sft = l * b;
                 box.querySelector('.f-area').value = sft > 0 ? sft.toFixed(2) + ' SFT' : '';
                 totalFrameSFT += sft;
+                frameCost += sft * getRates(box).sft;
             });
 
-            let panelCost = totalPanelCFT * rates.cft;
-            let frameCost = totalFrameSFT * rates.sft;
             let grandTotal = panelCost + frameCost;
 
             document.getElementById('sum_rate_sft').innerText = rates.sft;
@@ -682,6 +690,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
         }
 
         function prepareJSON() {
+            calculateAreas();
             let payload = {
                 extra_item_title: document.getElementById('extra_item_name').value,
                 panels: [],
@@ -690,6 +699,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
 
             document.querySelectorAll('#panelContainer .dynamic-box').forEach(box => {
                 payload.panels.push({
+                    remark: box.querySelector('.item-remark').value.trim(),
+                    surface: box.querySelector('.item-surface').value,
+                    core: box.querySelector('.item-core').value,
+                    rate: getRates(box).cft,
                     length: box.querySelector('.p-len').value || '0',
                     width: box.querySelector('.p-width').value || '0',
                     height: box.querySelector('.p-height').value || '0',
@@ -699,6 +712,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
 
             document.querySelectorAll('#frameContainer .dynamic-box').forEach(box => {
                 payload.frames.push({
+                    remark: box.querySelector('.item-remark').value.trim(),
+                    surface: box.querySelector('.item-surface').value,
+                    core: box.querySelector('.item-core').value,
+                    rate: getRates(box).sft,
                     length: box.querySelector('.f-len').value || '0',
                     breadth: box.querySelector('.f-breadth').value || '0',
                     sft: box.querySelector('.f-area').value || '0 SFT'

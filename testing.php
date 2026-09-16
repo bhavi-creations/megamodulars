@@ -3,6 +3,7 @@ session_start();
 
 // Include Mail Integration Script
 require_once __DIR__ . '/send-mailer.php';
+require_once __DIR__ . '/quotation-pdf.php';
 
 $admin_email = 'reach.mmi26@gmail.com'; // Admin Email ID
 
@@ -175,16 +176,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Send the quotation to both the client and the configured mail recipient.
             $admin_email_body = preg_replace('/<!-- CLIENT_ONLY_START -->.*?<!-- CLIENT_ONLY_END -->/s', '', $email_body);
-            $clientMail = dispatchQuotationMail($email, $full_name, "Appointment Request Confirmation - Mega Modulars", $email_body);
-            $adminMail  = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $admin_email_body);
+            $clientMail = false;
+            $adminMail = false;
+            $pdf_failed = false;
+            try {
+                // Build both attachments before sending either email.
+                $client_pdf = buildQuotationPdf($email_body);
+                $admin_pdf = buildQuotationPdf($admin_email_body);
+                $client_body = "<p>Dear <strong>{$safe_name}</strong>,</p><p>Your quotation details are attached as a PDF. Our team will contact you to confirm your appointment.</p><p>Thank you,<br>Mega Modulars</p>";
+                $admin_body = "<p>A new quotation request from <strong>{$safe_name}</strong> is attached as a PDF.</p>";
+                $clientMail = dispatchQuotationMail($email, $full_name, "Appointment Request Confirmation - Mega Modulars", $client_body, $client_pdf);
+                $adminMail = dispatchQuotationMail($admin_email, "Admin", "New Quotation Received - " . $full_name, $admin_body, $admin_pdf);
+            } catch (\Throwable $e) {
+                $pdf_failed = true;
+                error_log('Quotation PDF generation failed: ' . $e->getMessage());
+            }
 
             if ($clientMail && $adminMail) {
                 $show_success_modal = true;
                 $_SESSION['quotation_submitted'] = true;
                 $message_status = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                    <strong>Success!</strong> Quotation details sent by email.
+                    <strong>Success!</strong> Quotation PDF sent by email.
                     <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                 </div>";
+            } elseif ($pdf_failed) {
+                $message_status = "<div class='alert alert-danger' role='alert'>The quotation PDF could not be generated. Please try again or contact us.</div>";
             } else {
                 $message_status = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                     <strong>Email failed!</strong> One or both emails could not be sent. Please check SMTP settings.

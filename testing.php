@@ -86,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $safe_core = htmlspecialchars($core);
             $safe_notes = nl2br(htmlspecialchars($notes));
 
+            $email_header = "<div class='header'><h2 style='margin:0;'>Quotation Confirmation - Mega Modulars</h2></div>";
             $email_body = "
             <html>
             <head>
@@ -102,9 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </head>
             <body>
                 <div class='container'>
-                    <div class='header'>
-                        <h2 style='margin:0;'>Quotation Confirmation - Mega Modulars</h2>
-                    </div>
+                    {$email_header}
                     <!-- CLIENT_ONLY_START -->
                     <p>Dear <strong>{$safe_name}</strong>,</p>
                     <p>Your appointment request has been submitted successfully. Our team will contact you to confirm the appointment date and time. Here are your quotation selection details:</p>
@@ -181,8 +180,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdf_failed = false;
             try {
                 // Build both attachments before sending either email.
-                $client_pdf = buildQuotationPdf($email_body);
-                $admin_pdf = buildQuotationPdf($admin_email_body);
+                $logo_data = base64_encode(file_get_contents(__DIR__ . '/assets/img/quotation-logo.jpg'));
+                $pdf_header = "<table class='pdf-header'><tr>" .
+                    "<td class='pdf-logo-cell'><img src='data:image/jpeg;base64,{$logo_data}' alt='Mega Modular Industries'></td>" .
+                    "<td class='pdf-contact-cell'><strong>MEGA MODULAR INDUSTRIES</strong><br>" .
+                    "Plot no - 1, APIIC PHASE II,<br>AUTONAGAR, SARPAVARAM, KAKINADA, 533005<br>" .
+                    "Phone: +91 99664 71714<br>Email: info@megamodular.com</td>" .
+                    "</tr></table>";
+                $client_pdf = buildQuotationPdf(str_replace($email_header, $pdf_header, $email_body));
+                $admin_pdf = buildQuotationPdf(str_replace($email_header, $pdf_header, $admin_email_body));
                 $client_body = "<p>Dear <strong>{$safe_name}</strong>,</p><p>Your quotation details are attached as a PDF. Our team will contact you to confirm your appointment.</p><p>Thank you,<br>Mega Modulars</p>";
                 $admin_body = "<p>A new quotation request from <strong>{$safe_name}</strong> is attached as a PDF.</p>";
                 $clientMail = dispatchQuotationMail($email, $full_name, "Appointment Request Confirmation - Mega Modulars", $client_body, $client_pdf);

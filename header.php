@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body class="<?= $currentPage === 'get-quotation.php' ? 'quotation-page' : '' ?>">
 
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg new-side-slider-navbar sticky-top">

@@ -236,21 +236,232 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
     <title>Dynamic Layout & Quotation Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        :root {
+            --quotation-brown: #7c3a10;
+            --quotation-deep: #4d210b;
+            --quotation-cream: #faf6f0;
+            --quotation-line: #eadfd3;
+            --quotation-ink: #2c211b;
+            --quotation-muted: #746960;
+        }
+
+        body.quotation-page {
+            background: linear-gradient(135deg, #f8f3ed 0%, #fff 55%, #f4ebe2 100%);
+            color: var(--quotation-ink);
+            /* padding-bottom: 56px !important; */
+        }
+
+        .quotation-shell {
+            max-width: 1080px !important;
+            padding: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .quotation-intro {
+            position: relative;
+            overflow: hidden;
+            margin: 18px 0 24px;
+            padding: 34px clamp(22px, 5vw, 58px);
+            border-radius: 18px;
+            color: #fff;
+            background: linear-gradient(120deg, rgba(77, 33, 11, .98), rgba(124, 58, 16, .92));
+            box-shadow: 0 16px 35px rgba(77, 33, 11, .18);
+        }
+
+        .quotation-intro::after {
+            content: "";
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            right: -56px;
+            top: -70px;
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 50%;
+            box-shadow: 0 0 0 24px rgba(255, 255, 255, .05), 0 0 0 48px rgba(255, 255, 255, .04);
+        }
+
+        .quotation-kicker {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+            color: #e8c7a8;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .quotation-intro h1 {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 8px;
+            font-family: Georgia, serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 400;
+        }
+
+        .quotation-intro p {
+            position: relative;
+            z-index: 1;
+            max-width: 620px;
+            margin: 0;
+            color: rgba(255, 255, 255, .82);
+        }
+
+        .quotation-form {
+            padding: clamp(18px, 3vw, 34px);
+            border: 1px solid rgba(124, 58, 16, .12);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .9);
+            box-shadow: 0 14px 38px rgba(82, 48, 26, .08);
+        }
+
+        .quotation-section {
+            padding: 22px 0;
+            border-bottom: 1px solid var(--quotation-line);
+        }
+
+        .quotation-section:last-of-type {
+            border-bottom: 0;
+        }
+
+        .quotation-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            color: var(--quotation-deep);
+            font-size: .86rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+        }
+
+        .quotation-section-title .badge-step {
+            flex: 0 0 auto;
+            width: 32px;
+            height: 32px;
+            margin: 0;
+            background: var(--quotation-brown);
+            box-shadow: 0 5px 12px rgba(124, 58, 16, .2);
+        }
+
         .selectable-card {
-            cursor: pointer;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            transition: all 0.2s ease-in-out;
+            min-height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--quotation-line);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--quotation-ink);
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
         }
 
         .selectable-card:hover {
-            border-color: #8b4513;
+            border-color: var(--quotation-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(124, 58, 16, .1);
         }
 
         .selectable-card.active {
-            border-color: #8b4513;
-            background-color: #fdf8f5;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-color: var(--quotation-brown);
+            background: var(--quotation-cream);
+            box-shadow: inset 0 0 0 1px var(--quotation-brown), 0 8px 16px rgba(124, 58, 16, .1);
+            color: var(--quotation-deep);
+        }
+
+        .quotation-panel {
+            border: 1px solid var(--quotation-line) !important;
+            border-radius: 12px !important;
+            background: #fff !important;
+        }
+
+        .quotation-panel-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid var(--quotation-line);
+            color: var(--quotation-deep);
+            font-size: .83rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .quotation-action,
+        .quotation-action:hover,
+        .quotation-action:focus,
+        .quotation-action:active {
+            border-color: var(--quotation-brown) !important;
+            background: var(--quotation-brown) !important;
+            color: #fff !important;
+            box-shadow: 0 8px 16px rgba(124, 58, 16, .2);
+        }
+
+        .dynamic-box {
+            border: 1px solid var(--quotation-line);
+            border-left: 3px solid #c58b5f;
+            border-radius: 10px;
+            background: #fffaf6;
+            box-shadow: 0 5px 14px rgba(76, 44, 24, .05);
+        }
+
+        .quotation-contact {
+            border: 1px solid var(--quotation-line) !important;
+            border-radius: 12px !important;
+            background: var(--quotation-cream);
+        }
+
+        .quotation-contact .form-label {
+            color: var(--quotation-deep);
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .quotation-contact .form-control,
+        .quotation-panel .form-control,
+        .quotation-panel .form-select {
+            border-color: #dfd0c2;
+        }
+
+        .quotation-contact .form-control:focus,
+        .quotation-panel .form-control:focus,
+        .quotation-panel .form-select:focus {
+            border-color: var(--quotation-brown);
+            box-shadow: 0 0 0 .2rem rgba(124, 58, 16, .12);
+        }
+
+        .quotation-submit {
+            border: 0 !important;
+            background: var(--quotation-brown) !important;
+            box-shadow: 0 8px 16px rgba(124, 58, 16, .2);
+        }
+
+        .quotation-submit:hover {
+            background: var(--quotation-deep) !important;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 575.98px) {
+            .quotation-intro {
+                margin-top: 10px;
+                border-radius: 12px;
+            }
+
+            .quotation-form {
+                padding: 12px;
+            }
+
+            .quotation-panel-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        .selectable-card {
+            cursor: pointer;
         }
 
         .badge-step {
@@ -277,9 +488,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
     </style>
 </head>
 
-<body class="bg-light py-4">
+<body class="quotation-page py-4">
 
-    <div class="container bg-white p-4 rounded shadow-sm" style="max-width: 920px;">
+    <div class="container quotation-shell">
+        <section class="quotation-intro">
+            <div class="quotation-kicker">Mega Modular Industries</div>
+            <h1>Build a space that feels like yours.</h1>
+            <p>Share your preferred layout and dimensions. We will prepare a detailed quotation tailored to your project.</p>
+        </section>
+
+        <div class="quotation-form">
         <?= $message_status ?>
 
         <form id="quotationForm" method="POST" action="testing.php" onsubmit="prepareJSON()">
@@ -300,8 +518,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             <input type="hidden" name="grand_total_amount" id="hid_grand_total_amount" value="0">
 
             <!-- 1. CHOOSE LAYOUT -->
-            <div class="mb-4">
-                <h5 class="fw-bold d-flex align-items-center"><span class="badge-step">1</span> CHOOSE LAYOUT</h5>
+            <div class="quotation-section">
+                <h5 class="quotation-section-title"><span class="badge-step">1</span> Choose Layout</h5>
                 <div class="row row-cols-2 row-cols-md-6 g-2 mt-1">
                     <?php
                     $layouts = ['Kitchen', 'Wardrobe', 'TV Point', 'Krokary', 'Paneling', 'Extra Items'];
@@ -317,8 +535,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             </div>
 
             <!-- Dynamic Inputs Section based on Layout -->
-            <div class="mb-4 border p-3 rounded bg-body">
-                <h6 class="fw-bold border-bottom pb-2">DIMENSION DETAILS (<span id="activeLayoutTitle" class="text-primary">Kitchen</span>)</h6>
+            <div class="quotation-section quotation-panel p-3">
+                <h6 class="quotation-panel-heading">Dimension Details (<span id="activeLayoutTitle">Kitchen</span>)</h6>
 
                 <div id="extraItemTitleContainer" class="mb-3 d-none">
                     <label class="form-label fw-semibold">Custom Item Name:</label>
@@ -329,7 +547,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                 <div class="mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="fw-bold text-secondary">Panels (Cubic Area Calculation)</span>
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addPanel()">+ Add Panel</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary quotation-action" onclick="addPanel()">+ Add Panel</button>
                     </div>
                     <div id="panelContainer"></div>
                 </div>
@@ -338,7 +556,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                 <div class="mb-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="fw-bold text-secondary">Frames (Square Area Calculation)</span>
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addFrame()">+ Add Frame</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary quotation-action" onclick="addFrame()">+ Add Frame</button>
                     </div>
                     <div id="frameContainer"></div>
                 </div>
@@ -368,8 +586,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
             </div>
 
             <!-- FORM SUBMISSION -->
-            <div class="border p-3 rounded">
-                <h6 class="fw-bold mb-3">Request Official Quotation</h6>
+            <div class="quotation-section quotation-contact p-3">
+                <h6 class="quotation-panel-heading mb-3">Request Official Quotation</h6>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label">Full Name <span class="text-danger">*</span></label>
@@ -392,7 +610,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                         <textarea name="notes" id="form_notes" class="form-control" rows="2" placeholder="Mention special requirements or preferences..."></textarea>
                     </div>
                     <div class="col-12 text-end">
-                        <button type="submit" name="submit_quotation" class="btn btn-success px-4">Submit Request</button>
+                        <button type="submit" name="submit_quotation" class="btn btn-success quotation-submit px-4">Submit Request</button>
                     </div>
                 </div>
             </div>
@@ -456,6 +674,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
                 </div>
             </div>
         </form>
+        </div>
     </div>
 
 
@@ -606,13 +825,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $show_success_modal) {
         function itemMaterials(id) {
             return `<div class="row g-2 mt-2">
                 <div class="col-md-6">
-                    <label for="${id}_surface" class="form-label fw-semibold small">CHOOSE SURFACE FINISH</label>
+                    <label for="${id}_surface" class="form-label fw-semibold small">Choose Surface Finish</label>
                     <select id="${id}_surface" class="form-select form-select-sm item-surface" onchange="calculateAreas()">
                         ${Object.keys(PRICE_MATRIX.Plywood).map(value => '<option>' + value + '</option>').join('')}
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="${id}_core" class="form-label fw-semibold small">CHOOSE CORE MATERIAL</label>
+                    <label for="${id}_core" class="form-label fw-semibold small">Choose Core Material</label>
                     <select id="${id}_core" class="form-select form-select-sm item-core" onchange="calculateAreas()">
                         ${Object.keys(PRICE_MATRIX).map(value => '<option>' + value + '</option>').join('')}
                     </select>
